@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#CC7D5E">
+
   <!-- ===== PRIMARY SEO ===== -->
   <title>Zakiul Fahmi Jailani, MSc — GeoAI Researcher & Lecturer | Bakrie University</title>
   <meta name="description" content="Personal academic website of Zakiul Fahmi Jailani, MSc. Researcher in Agentic GeoAI, spatial data science, NLP, and educational technology at Bakrie University, Jakarta, Indonesia.">
@@ -367,7 +374,6 @@
       color: var(--text);
       line-height: 1.2;
     }
-    /* Tab filter */
     .wn-tabs {
       display: flex;
       gap: 0.35rem;
@@ -387,20 +393,14 @@
       transition: background 0.18s, color 0.18s;
     }
     .wn-tab:hover { color: var(--text); }
-    .wn-tab.active {
-      background: var(--accent);
-      color: #fff;
-    }
+    .wn-tab.active { background: var(--accent); color: #fff; }
 
-    /* Editorial grid: announcement big left, article + project right */
     .wn-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto auto;
       gap: 1rem;
     }
-
-    /* Base editorial card */
     .wn-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -411,123 +411,39 @@
       transition: box-shadow 0.22s, border-color 0.22s, transform 0.22s;
       cursor: pointer;
     }
-    .wn-card:hover {
-      box-shadow: var(--shadow-md);
-      border-color: var(--accent-border);
-      transform: translateY(-2px);
-    }
-
-    /* Announcement card — spans 2 rows on left */
-    .wn-card.announcement {
-      grid-column: 1;
-      grid-row: 1 / 3;
-    }
-    /* Article card — top right */
-    .wn-card.article {
-      grid-column: 2;
-      grid-row: 1;
-    }
-    /* Project card — bottom right */
-    .wn-card.project {
-      grid-column: 2;
-      grid-row: 2;
-    }
-
-    /* Thumbnail */
-    .wn-thumb {
-      width: 100%;
-      aspect-ratio: 16/8;
-      object-fit: cover;
-      display: block;
-      background: var(--surface2);
-    }
+    .wn-card:hover { box-shadow: var(--shadow-md); border-color: var(--accent-border); transform: translateY(-2px); }
+    .wn-card.announcement { grid-column: 1; grid-row: 1 / 3; }
+    .wn-card.article { grid-column: 2; grid-row: 1; }
+    .wn-card.project { grid-column: 2; grid-row: 2; }
+    .wn-thumb { width: 100%; aspect-ratio: 16/8; object-fit: cover; display: block; background: var(--surface2); }
     .wn-card.announcement .wn-thumb { aspect-ratio: 16/9; }
-    .wn-card.article .wn-thumb,
-    .wn-card.project .wn-thumb { aspect-ratio: 16/7; }
-
-    /* Thumbnail placeholder (SVG bg) */
+    .wn-card.article .wn-thumb, .wn-card.project .wn-thumb { aspect-ratio: 16/7; }
     .wn-thumb-placeholder {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      background: var(--surface2);
-      color: var(--text-faint);
-      flex-shrink: 0;
+      width: 100%; display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; background: var(--surface2); color: var(--text-faint); flex-shrink: 0;
     }
     .wn-card.announcement .wn-thumb-placeholder { aspect-ratio: 16/9; font-size: 3.5rem; }
-    .wn-card.article .wn-thumb-placeholder,
-    .wn-card.project .wn-thumb-placeholder { aspect-ratio: 16/7; }
-
-    /* Card body */
+    .wn-card.article .wn-thumb-placeholder, .wn-card.project .wn-thumb-placeholder { aspect-ratio: 16/7; }
     .wn-body { padding: 1.25rem 1.35rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
     .wn-card.announcement .wn-body { padding: 1.5rem 1.6rem 1.65rem; }
-
     .wn-type-badge {
       display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.63rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      padding: 0.18rem 0.6rem;
-      border-radius: 4px;
-      margin-bottom: 0.7rem;
-      width: fit-content;
+      font-size: 0.63rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.18rem 0.6rem; border-radius: 4px; margin-bottom: 0.7rem; width: fit-content;
     }
-    .wn-type-badge.type-announce {
-      background: rgba(234,179,8,0.12);
-      color: #ca8a04;
-    }
+    .wn-type-badge.type-announce { background: rgba(234,179,8,0.12); color: #ca8a04; }
     [data-theme="dark"] .wn-type-badge.type-announce { color: #eab308; }
-    .wn-type-badge.type-article {
-      background: rgba(14,165,233,0.12);
-      color: #0284c7;
-    }
+    .wn-type-badge.type-article { background: rgba(14,165,233,0.12); color: #0284c7; }
     [data-theme="dark"] .wn-type-badge.type-article { color: #38bcd4; }
-    .wn-type-badge.type-project {
-      background: var(--accent-dim);
-      color: var(--accent);
-    }
-
-    .wn-card-title {
-      font-family: var(--font-display);
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.3;
-      margin-bottom: 0.5rem;
-    }
+    .wn-type-badge.type-project { background: var(--accent-dim); color: var(--accent); }
+    .wn-card-title { font-family: var(--font-display); font-weight: 400; color: var(--text); line-height: 1.3; margin-bottom: 0.5rem; }
     .wn-card.announcement .wn-card-title { font-size: clamp(1.1rem, 2vw, 1.45rem); }
-    .wn-card.article .wn-card-title,
-    .wn-card.project .wn-card-title { font-size: 0.97rem; }
-
-    .wn-card-desc {
-      font-size: 0.845rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      flex: 1;
-      margin-bottom: 1rem;
-    }
+    .wn-card.article .wn-card-title, .wn-card.project .wn-card-title { font-size: 0.97rem; }
+    .wn-card-desc { font-size: 0.845rem; color: var(--text-muted); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
     .wn-card.announcement .wn-card-desc { font-size: 0.93rem; }
-
-    .wn-card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.73rem;
-      color: var(--text-faint);
-      margin-top: auto;
-    }
-    .wn-card-cta {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      transition: gap 0.18s, color 0.18s;
-    }
+    .wn-card-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.73rem; color: var(--text-faint); margin-top: auto; }
+    .wn-card-cta { font-size: 0.78rem; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.18s, color 0.18s; }
     .wn-card:hover .wn-card-cta { gap: 0.55rem; color: var(--accent-hover); }
-
-    /* hidden state for tab filter */
     .wn-card.hidden { display: none; }
 
     /* === SECTIONS === */
@@ -535,19 +451,8 @@
     section { padding: 4rem 2rem; }
     section:nth-child(even) { background: var(--surface); }
     .section-header { margin-bottom: 2.5rem; }
-    .section-label {
-      font-size: 0.67rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.13em;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 2.5vw, 1.9rem);
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.2;
-    }
+    .section-label { font-size: 0.67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--accent); margin-bottom: 0.4rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.5rem, 2.5vw, 1.9rem); font-weight: 400; color: var(--text); line-height: 1.2; }
     .section-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.35rem; }
     .section-subtitle a { color: var(--teal); }
     .section-subtitle a:hover { color: var(--teal-hover); }
@@ -556,13 +461,7 @@
     .about-intro { font-size: 0.95rem; color: var(--text-muted); line-height: 1.82; max-width: 65ch; margin-bottom: 1.75rem; }
     .about-intro strong { color: var(--text); }
     .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .about-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.35rem 1.5rem;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
+    .about-card { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem 1.5rem; transition: box-shadow 0.2s, border-color 0.2s; }
     .about-card:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
     .about-card-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
     .about-card h4 { font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 0.7rem; font-weight: 600; }
@@ -571,21 +470,10 @@
     .about-card li::before { content: '→'; color: var(--accent); flex-shrink: 0; margin-top: 0.05rem; }
 
     /* === PUBLICATIONS === */
-    .pub-year {
-      font-size: 0.69rem; font-weight: 800;
-      letter-spacing: 0.13em; text-transform: uppercase;
-      color: var(--accent);
-      margin: 2rem 0 0.9rem;
-      display: flex; align-items: center; gap: 0.75rem;
-    }
+    .pub-year { font-size: 0.69rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin: 2rem 0 0.9rem; display: flex; align-items: center; gap: 0.75rem; }
     .pub-year:first-child { margin-top: 0; }
     .pub-year::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .pub-item {
-      border-left: 2px solid var(--border);
-      padding: 1rem 0 1rem 1.4rem;
-      margin-bottom: 0.1rem;
-      transition: border-color 0.18s, padding-left 0.2s;
-    }
+    .pub-item { border-left: 2px solid var(--border); padding: 1rem 0 1rem 1.4rem; margin-bottom: 0.1rem; transition: border-color 0.18s, padding-left 0.2s; }
     .pub-item:hover { border-left-color: var(--accent); padding-left: 1.65rem; }
     .pub-title { font-weight: 600; color: var(--text); font-size: 0.93rem; margin-bottom: 0.3rem; line-height: 1.45; }
     .pub-meta { font-size: 0.815rem; color: var(--text-muted); margin-bottom: 0.3rem; }
@@ -611,14 +499,7 @@
 
     /* === AWARDS === */
     .awards-list { display: flex; flex-direction: column; gap: 0.8rem; }
-    .award-item {
-      display: flex; gap: 1.1rem; align-items: flex-start;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.3rem;
-      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-    }
+    .award-item { display: flex; gap: 1.1rem; align-items: flex-start; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.3rem; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
     .award-item:hover { box-shadow: var(--shadow-sm); transform: translateX(5px); border-color: var(--accent-border); }
     .award-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1; }
     .award-title { font-weight: 600; font-size: 0.93rem; margin-bottom: 0.2rem; color: var(--text); }
@@ -627,14 +508,7 @@
 
     /* === PROJECTS === */
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 1rem; }
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.35rem;
-      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
-      display: flex; flex-direction: column; gap: 0.6rem;
-    }
+    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; gap: 0.6rem; }
     .project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--accent-border); }
     .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
     .project-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
@@ -645,13 +519,7 @@
     .stack-tag { font-size: 0.67rem; font-weight: 600; background: var(--accent-dim); color: var(--accent); border-radius: 4px; padding: 0.18rem 0.5rem; border: 1px solid var(--accent-border); }
 
     /* === FOOTER === */
-    footer {
-      background: #1a1a18;
-      color: rgba(249,249,247,0.4);
-      padding: 3rem 2rem 2.5rem;
-      text-align: center;
-      border-top: 1px solid rgba(249,249,247,0.05);
-    }
+    footer { background: #1a1a18; color: rgba(249,249,247,0.4); padding: 3rem 2rem 2.5rem; text-align: center; border-top: 1px solid rgba(249,249,247,0.05); }
     .footer-name { font-family: var(--font-display); font-size: 1.3rem; color: rgba(249,249,247,0.8); margin-bottom: 0.3rem; }
     .footer-role { font-size: 0.75rem; color: rgba(249,249,247,0.35); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem; }
     .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
@@ -678,9 +546,7 @@
       .stat { padding: 0 0.75rem; flex: 0 0 auto; border-right: none; }
       section { padding: 2.75rem 1.25rem; }
       .wn-grid { grid-template-columns: 1fr; }
-      .wn-card.announcement,
-      .wn-card.article,
-      .wn-card.project { grid-column: 1; grid-row: auto; }
+      .wn-card.announcement, .wn-card.article, .wn-card.project { grid-column: 1; grid-row: auto; }
       .whats-new-header { flex-direction: column; align-items: flex-start; }
     }
   </style>
@@ -777,18 +643,12 @@
         <button class="wn-tab" data-filter="project" role="tab" aria-selected="false">Projects</button>
       </div>
     </div>
-
     <div class="wn-grid">
-
-      <!-- ANNOUNCEMENT CARD (big, left, spans 2 rows) -->
       <a class="wn-card announcement" data-type="announcement" href="https://doi.org/10.1109/ICoCICs68032.2025.11384057" target="_blank" rel="noopener">
         <div class="wn-thumb-placeholder" aria-hidden="true" style="background: linear-gradient(135deg, #1e2a1e 0%, #162416 50%, #0d1a10 100%);">
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(204,125,94,0.6)" stroke-width="1.2">
-            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-            <line x1="6" y1="1" x2="6" y2="4"/>
-            <line x1="10" y1="1" x2="10" y2="4"/>
-            <line x1="14" y1="1" x2="14" y2="4"/>
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
           </svg>
         </div>
         <div class="wn-body">
@@ -801,16 +661,11 @@
           </div>
         </div>
       </a>
-
-      <!-- ARTICLE CARD (top right) -->
       <div class="wn-card article" data-type="article">
         <div class="wn-thumb-placeholder" aria-hidden="true" style="background: linear-gradient(135deg, #1a1e2a 0%, #141624 50%, #0d1018 100%);">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(14,165,233,0.5)" stroke-width="1.4">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/>
-            <line x1="16" y1="13" x2="8" y2="13"/>
-            <line x1="16" y1="17" x2="8" y2="17"/>
-            <polyline points="10 9 9 9 8 9"/>
+            <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
           </svg>
         </div>
         <div class="wn-body">
@@ -823,14 +678,10 @@
           </div>
         </div>
       </div>
-
-      <!-- PROJECT CARD (bottom right) -->
       <a class="wn-card project" data-type="project" href="https://github.com/zakiulfahmijailani/SIGAPP" target="_blank" rel="noopener">
         <div class="wn-thumb-placeholder" aria-hidden="true" style="background: linear-gradient(135deg, #1e1a14 0%, #1a1610 50%, #14100c 100%);">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(204,125,94,0.55)" stroke-width="1.4">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
           </svg>
         </div>
         <div class="wn-body">
@@ -843,7 +694,6 @@
           </div>
         </div>
       </a>
-
     </div>
   </div>
 </div>
@@ -943,10 +793,7 @@
       <tbody>
         <tr>
           <td>2026</td>
-          <td>
-            <div class="grant-top">★ Top Grant</div>
-            <strong>Empowering Rural Communities in Indonesia through AI-Driven Agricultural Solutions</strong>
-          </td>
+          <td><div class="grant-top">★ Top Grant</div><strong>Empowering Rural Communities in Indonesia through AI-Driven Agricultural Solutions</strong></td>
           <td class="funder"><a href="http://dx.doi.org/10.13039/100020519" target="_blank">IEEE Computer Society</a><br>Washington D.C., US</td>
           <td class="amount">USD 25,000<br><small style="font-weight:400;color:var(--text-muted)">≈ IDR 404,000,000</small></td>
         </tr>
@@ -1065,7 +912,6 @@
 </footer>
 
 <script>
-  /* Theme toggle */
   (function(){
     const root = document.documentElement;
     const toggle = document.querySelector('[data-theme-toggle]');
@@ -1085,7 +931,6 @@
     });
   })();
 
-  /* What's New tab filter */
   (function(){
     const tabs = document.querySelectorAll('.wn-tab');
     const cards = document.querySelectorAll('.wn-card');
@@ -1102,19 +947,13 @@
             card.classList.add('hidden');
           }
         });
-        /* reset grid layout on filter — single card goes full width */
         const visible = document.querySelectorAll('.wn-card:not(.hidden)');
         if(visible.length === 1){
           visible[0].style.gridColumn = '1 / -1';
           visible[0].style.gridRow = 'auto';
         } else {
-          cards.forEach(function(card){
-            card.style.gridColumn = '';
-            card.style.gridRow = '';
-          });
-          /* re-apply default grid placement */
-          const all = document.querySelectorAll('.wn-card:not(.hidden)');
-          if(all.length >= 1 && filter === 'all'){
+          cards.forEach(function(card){ card.style.gridColumn = ''; card.style.gridRow = ''; });
+          if(filter === 'all'){
             document.querySelector('.wn-card.announcement') && (document.querySelector('.wn-card.announcement').style.cssText = '');
             document.querySelector('.wn-card.article') && (document.querySelector('.wn-card.article').style.cssText = '');
             document.querySelector('.wn-card.project') && (document.querySelector('.wn-card.project').style.cssText = '');
@@ -1124,7 +963,6 @@
     });
   })();
 
-  /* Scroll reveal */
   (function(){
     const els = document.querySelectorAll('.reveal');
     if(!els.length) return;
