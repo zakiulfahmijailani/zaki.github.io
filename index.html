@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,185 +10,511 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
+
+    :root, [data-theme="light"] {
       --navy: #0a2540;
       --navy-light: #0e3460;
       --teal: #0d7a8a;
       --teal-light: #14a3b8;
-      --bg: #f7f8fa;
+      --teal-dim: rgba(13,122,138,0.08);
+      --bg: #f5f6f9;
       --surface: #ffffff;
+      --surface2: #f0f2f7;
       --text: #1a1f2e;
       --text-muted: #5a6478;
       --text-faint: #9aa0b0;
-      --border: rgba(10,37,64,0.10);
-      --radius: 10px;
-      --shadow: 0 2px 12px rgba(10,37,64,0.08);
+      --border: rgba(10,37,64,0.09);
+      --border-strong: rgba(10,37,64,0.16);
+      --radius: 12px;
+      --radius-sm: 7px;
+      --shadow-sm: 0 1px 3px rgba(10,37,64,0.07), 0 4px 12px rgba(10,37,64,0.05);
+      --shadow-md: 0 4px 16px rgba(10,37,64,0.10), 0 1px 3px rgba(10,37,64,0.06);
+      --shadow-lg: 0 12px 40px rgba(10,37,64,0.13);
       --font-body: 'Inter', system-ui, sans-serif;
       --font-display: 'Instrument Serif', Georgia, serif;
+      --hero-bg1: #071c30;
+      --hero-bg2: #0b2d50;
+      --hero-bg3: #0a4a5c;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); font-size: 16px; color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+    [data-theme="dark"] {
+      --navy: #e2e8f0;
+      --navy-light: #cbd5e1;
+      --teal: #38bcd4;
+      --teal-light: #67d4e8;
+      --teal-dim: rgba(56,188,212,0.10);
+      --bg: #0f1117;
+      --surface: #181c27;
+      --surface2: #1e2333;
+      --text: #e2e8f0;
+      --text-muted: #8892a4;
+      --text-faint: #4a5568;
+      --border: rgba(255,255,255,0.07);
+      --border-strong: rgba(255,255,255,0.13);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+      --hero-bg1: #050d18;
+      --hero-bg2: #071625;
+      --hero-bg3: #062030;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 60px; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
     a { color: var(--teal); text-decoration: none; transition: color 0.18s; }
     a:hover { color: var(--teal-light); }
     img { display: block; max-width: 100%; }
     p { max-width: 70ch; }
+
+    /* ── NAV ── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(10,37,64,0.97);
-      backdrop-filter: blur(8px);
+      background: rgba(7,22,37,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 0 2rem;
       display: flex; align-items: center; justify-content: space-between;
       height: 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .nav-brand { font-family: var(--font-display); font-size: 1.1rem; color: #fff; letter-spacing: 0.01em; }
-    .nav-links { display: flex; gap: 1.75rem; }
-    .nav-links a { color: rgba(255,255,255,0.75); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; }
-    .nav-links a:hover { color: #fff; }
-    .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #0d5a6e 100%);
+    [data-theme="dark"] nav { background: rgba(5,10,20,0.96); }
+    .nav-brand {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
       color: #fff;
-      padding: 5rem 2rem 4rem;
+      letter-spacing: 0.01em;
+      display: flex; align-items: center; gap: 0.6rem;
     }
-    .hero-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
-    .hero-name { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.15; margin-bottom: 0.5rem; }
-    .hero-title { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 1.25rem; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 500; }
-    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 52ch; margin-bottom: 1.75rem; line-height: 1.7; }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); display: inline-block; animation: pulse-dot 2.5s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+    .nav-links { display: flex; gap: 1.75rem; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.65); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.18s; }
+    .nav-links a:hover { color: #fff; }
+    .theme-toggle {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.7);
+      border-radius: 99px;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background 0.18s;
+      margin-left: 0.5rem;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(145deg, var(--hero-bg1) 0%, var(--hero-bg2) 55%, var(--hero-bg3) 100%);
+      color: #fff;
+      padding: 5rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(13,122,138,0.18) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(13,122,138,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 3rem;
+      align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--teal-light);
+      background: rgba(13,122,138,0.15);
+      border: 1px solid rgba(13,122,138,0.3);
+      border-radius: 99px;
+      padding: 0.3rem 0.85rem;
+      margin-bottom: 1.1rem;
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-name em { font-style: italic; opacity: 0.7; font-size: 0.75em; display: block; margin-top: 0.2rem; }
+    .hero-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 50ch;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.45rem; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.4rem;
-      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.9); border-radius: 99px;
-      padding: 0.3rem 0.85rem; font-size: 0.8rem; font-weight: 500;
-      transition: background 0.18s;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      border-radius: 99px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      transition: background 0.18s, border-color 0.18s;
     }
-    .hero-badge:hover { background: rgba(255,255,255,0.2); color: #fff; }
+    .hero-badge:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.28); color: #fff; }
+    .hero-badge svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
+    .avatar-wrap { position: relative; width: 192px; height: 192px; flex-shrink: 0; }
+    .avatar-ring {
+      position: absolute; inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(13,122,138,0.4);
+      animation: ring-spin 8s linear infinite;
+    }
+    .avatar-ring::after {
+      content: '';
+      position: absolute;
+      top: -3px; left: 50%;
+      transform: translateX(-50%);
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--teal-light);
+      box-shadow: 0 0 8px var(--teal-light);
+    }
+    @keyframes ring-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
     .hero-avatar {
-      width: 160px; height: 160px; border-radius: 50%;
-      border: 3px solid rgba(255,255,255,0.35);
+      width: 192px; height: 192px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.2);
       object-fit: cover;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      flex-shrink: 0;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      position: relative; z-index: 1;
     }
-    .stats-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 2rem; }
-    .stats-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 2.5rem; flex-wrap: wrap; }
-    .stat { text-align: center; }
-    .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
-    .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.1rem; }
+    .avatar-badge {
+      position: absolute; bottom: 8px; right: 4px; z-index: 2;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 99px;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      white-space: nowrap;
+    }
+    [data-theme="dark"] .avatar-badge { border-color: var(--bg); }
+
+    /* ── STATS ── */
+    .stats-bar {
+      background: var(--navy);
+      padding: 1.5rem 2rem;
+    }
+    [data-theme="dark"] .stats-bar { background: #0d1220; }
+    .stats-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 0; flex-wrap: wrap; justify-content: space-between; }
+    .stat {
+      text-align: center;
+      padding: 0 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      flex: 1;
+    }
+    .stat:last-child { border-right: none; }
+    .stat-value {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-value span { color: var(--teal-light); }
+    .stat-label { font-size: 0.68rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* ── SECTIONS ── */
     .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
-    section { padding: 3.5rem 2rem; }
+    section { padding: 4rem 2rem; }
     section:nth-child(even) { background: var(--surface); }
-    .section-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: var(--navy); margin-bottom: 0.35rem; }
-    .section-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 2rem; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .about-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
-    .about-card h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.6rem; }
-    .about-card p, .about-card li { font-size: 0.9rem; color: var(--text); }
-    .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
-    .about-card li::before { content: '→ '; color: var(--teal); }
-    .pub-year { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin: 1.75rem 0 0.75rem; }
+    .section-header { margin-bottom: 2.5rem; }
+    .section-label {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--teal);
+      margin-bottom: 0.4rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+    .section-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.35rem; }
+
+    /* ── ABOUT ── */
+    .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    .about-intro { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; max-width: 65ch; grid-column: 1 / -1; }
+    .about-intro strong { color: var(--text); }
+    .about-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem 1.5rem;
+      transition: box-shadow 0.2s;
+    }
+    [data-theme="light"] .about-card { background: var(--bg); }
+    .about-card:hover { box-shadow: var(--shadow-sm); }
+    .about-card-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
+    .about-card h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 0.7rem; font-weight: 600; }
+    .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .about-card li { font-size: 0.875rem; color: var(--text); display: flex; gap: 0.5rem; align-items: flex-start; }
+    .about-card li::before { content: '→'; color: var(--teal); flex-shrink: 0; margin-top: 0.05rem; }
+
+    /* ── PUBLICATIONS ── */
+    .pub-year {
+      font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--teal);
+      margin: 2rem 0 0.85rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
     .pub-year:first-child { margin-top: 0; }
-    .pub-item { border-left: 2px solid var(--border); padding: 0.85rem 0 0.85rem 1.25rem; margin-bottom: 0.25rem; transition: border-color 0.18s; }
-    .pub-item:hover { border-left-color: var(--teal); }
-    .pub-title { font-weight: 600; color: var(--text); font-size: 0.95rem; margin-bottom: 0.25rem; }
-    .pub-meta { font-size: 0.825rem; color: var(--text-muted); margin-bottom: 0.25rem; }
-    .pub-type { display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.15rem 0.5rem; border-radius: 4px; margin-right: 0.4rem; }
-    .pub-type.journal { background: #e8f4f8; color: #0a6080; }
-    .pub-type.conference { background: #f0e8f8; color: #5a2090; }
-    .pub-type.book { background: #e8f8ee; color: #1a6e3a; }
-    .pub-doi { font-size: 0.8rem; }
+    .pub-year::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .pub-item {
+      border-left: 2px solid var(--border);
+      padding: 1rem 0 1rem 1.35rem;
+      margin-bottom: 0.15rem;
+      transition: border-color 0.18s, padding-left 0.18s;
+    }
+    .pub-item:hover { border-left-color: var(--teal); padding-left: 1.6rem; }
+    .pub-title { font-weight: 600; color: var(--text); font-size: 0.93rem; margin-bottom: 0.3rem; line-height: 1.4; }
+    .pub-meta { font-size: 0.815rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+    .pub-type { display: inline-block; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.15rem 0.55rem; border-radius: 4px; margin-right: 0.4rem; }
+    .pub-type.journal { background: #dff0f5; color: #0a6080; }
+    .pub-type.conference { background: #ede8f7; color: #5a2090; }
+    .pub-type.book { background: #e4f5ea; color: #1a6e3a; }
+    [data-theme="dark"] .pub-type.journal { background: rgba(13,122,138,0.15); color: #67d4e8; }
+    [data-theme="dark"] .pub-type.conference { background: rgba(90,32,144,0.2); color: #c4a0f0; }
+    [data-theme="dark"] .pub-type.book { background: rgba(26,110,58,0.2); color: #6dd49a; }
+    .pub-doi { font-size: 0.79rem; }
+
+    /* ── GRANTS ── */
     .grants-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-    .grants-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); border-bottom: 2px solid var(--border); padding: 0.5rem 0.75rem; }
-    .grants-table td { padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .grants-table th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); border-bottom: 2px solid var(--border-strong); padding: 0.5rem 0.85rem; font-weight: 600; }
+    .grants-table td { padding: 1rem 0.85rem; border-bottom: 1px solid var(--border); vertical-align: top; }
     .grants-table tr:last-child td { border-bottom: none; }
-    .grants-table tr:hover td { background: var(--bg); }
+    .grants-table tbody tr { transition: background 0.15s; }
+    .grants-table tbody tr:hover td { background: var(--teal-dim); }
     .amount { font-weight: 700; color: var(--navy); white-space: nowrap; }
     .funder { color: var(--text-muted); font-size: 0.8rem; }
-    .awards-list { display: flex; flex-direction: column; gap: 1rem; }
-    .award-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
-    .award-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .award-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
-    .award-org { font-size: 0.825rem; color: var(--text-muted); }
-    .award-year { font-size: 0.75rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
-    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; transition: box-shadow 0.18s, border-color 0.18s; display: block; }
-    .project-card:hover { box-shadow: var(--shadow); border-color: rgba(13,122,138,0.3); }
-    .project-name { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.35rem; }
-    .project-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
-    .project-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-    .stack-tag { font-size: 0.7rem; font-weight: 600; background: rgba(13,122,138,0.08); color: var(--teal); border-radius: 4px; padding: 0.15rem 0.45rem; }
-    footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; padding: 2rem; font-size: 0.825rem; }
-    footer a { color: rgba(255,255,255,0.8); }
-    @media (max-width: 640px) {
+    .grant-top { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #d97706; background: #fef3c7; border-radius: 4px; padding: 0.15rem 0.5rem; margin-bottom: 0.3rem; }
+    [data-theme="dark"] .grant-top { background: rgba(217,119,6,0.15); color: #fbbf24; }
+
+    /* ── AWARDS ── */
+    .awards-list { display: flex; flex-direction: column; gap: 0.85rem; }
+    .award-item {
+      display: flex; gap: 1.1rem; align-items: flex-start;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    [data-theme="light"] .award-item { background: var(--bg); }
+    .award-item:hover { box-shadow: var(--shadow-sm); transform: translateX(4px); }
+    .award-icon { font-size: 1.6rem; flex-shrink: 0; line-height: 1; }
+    .award-title { font-weight: 600; font-size: 0.93rem; margin-bottom: 0.2rem; color: var(--text); }
+    .award-org { font-size: 0.815rem; color: var(--text-muted); }
+    .award-year { font-size: 0.68rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.2rem; }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 1rem; }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: rgba(13,122,138,0.25); }
+    .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+    .project-name { font-weight: 700; font-size: 0.95rem; color: var(--navy); }
+    .project-arrow { color: var(--text-faint); transition: color 0.18s, transform 0.18s; }
+    .project-card:hover .project-arrow { color: var(--teal); transform: translate(2px, -2px); }
+    .project-desc { font-size: 0.845rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.4rem; }
+    .stack-tag { font-size: 0.68rem; font-weight: 600; background: var(--teal-dim); color: var(--teal); border-radius: 4px; padding: 0.18rem 0.5rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: linear-gradient(145deg, #071c30, #0a2540);
+      color: rgba(255,255,255,0.5);
+      padding: 3rem 2rem 2.5rem;
+      text-align: center;
+    }
+    [data-theme="dark"] footer { background: #050d18; }
+    .footer-name { font-family: var(--font-display); font-size: 1.3rem; color: rgba(255,255,255,0.85); margin-bottom: 0.35rem; }
+    .footer-role { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.6); font-size: 0.82rem; transition: color 0.18s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.9); }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.28); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero-avatar { width: 120px; height: 120px; }
-      .about-grid { grid-template-columns: 1fr; }
+      .avatar-wrap { width: 130px; height: 130px; margin: 0 auto; }
+      .hero-avatar { width: 130px; height: 130px; }
+      .about-layout { grid-template-columns: 1fr; }
+      .about-intro { grid-column: 1; }
       .nav-links { display: none; }
-      .stats-inner { gap: 1.5rem; }
-      section { padding: 2.5rem 1.25rem; }
+      .stats-inner { justify-content: flex-start; gap: 1rem; }
+      .stat { padding: 0 0.75rem; flex: 0 0 auto; border-right: none; }
+      section { padding: 2.75rem 1.25rem; }
+      .grants-table { font-size: 0.8rem; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <span class="nav-brand">Zakiul Fahmi Jailani</span>
+  <span class="nav-brand">
+    <span class="nav-dot"></span>
+    Zakiul Fahmi Jailani
+  </span>
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="#publications">Publications</a>
     <a href="#grants">Grants</a>
     <a href="#awards">Awards</a>
     <a href="#projects">Projects</a>
+    <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </nav>
 
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-title">Lecturer · Researcher · Developer</div>
-      <h1 class="hero-name">Zakiul Fahmi Jailani, MSc</h1>
-      <p class="hero-desc">Researcher in Agentic GeoAI, spatial data science, and educational technology. Faculty at Bakrie University, Jakarta. Developing AI systems for education planning in Eastern Indonesia.</p>
+      <div class="hero-eyebrow">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bakrie University · Jakarta, Indonesia
+      </div>
+      <h1 class="hero-name">
+        Zakiul Fahmi Jailani
+        <em>M.Sc. Geo-Information Science</em>
+      </h1>
+      <p class="hero-desc">Researcher in Agentic GeoAI, spatial data science, and educational technology. Developing AI systems for education planning in Eastern Indonesia.</p>
       <div class="hero-badges">
-        <a class="hero-badge" href="mailto:zakiul.jailani@bakrie.ac.id">✉ zakiul.jailani@bakrie.ac.id</a>
-        <a class="hero-badge" href="https://orcid.org/0000-0002-2171-0533" target="_blank" rel="noopener">🟢 ORCID</a>
-        <a class="hero-badge" href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank" rel="noopener">🎓 Google Scholar</a>
-        <a class="hero-badge" href="https://github.com/zakiulfahmijailani" target="_blank" rel="noopener">🐙 GitHub</a>
-        <a class="hero-badge" href="https://www.linkedin.com/in/zakiulfahmi/" target="_blank" rel="noopener">💼 LinkedIn</a>
+        <a class="hero-badge" href="mailto:zakiul.jailani@bakrie.ac.id">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <a class="hero-badge" href="https://orcid.org/0000-0002-2171-0533" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          ORCID
+        </a>
+        <a class="hero-badge" href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 0 12 20.055a11.952 11.952 0 0 0-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
+          Google Scholar
+        </a>
+        <a class="hero-badge" href="https://github.com/zakiulfahmijailani" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a class="hero-badge" href="https://www.linkedin.com/in/zakiulfahmi/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
       </div>
     </div>
-    <img class="hero-avatar" src="./315444547_5870104653023247_855334815523158116_n.jpg" alt="Zakiul Fahmi Jailani" width="160" height="160" loading="eager">
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
+      <img class="hero-avatar" src="./profile.jpg" alt="Zakiul Fahmi Jailani" width="192" height="192" loading="eager">
+      <span class="avatar-badge">GeoAI · NLP</span>
+    </div>
   </div>
 </section>
 
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-value">7</div><div class="stat-label">Publications</div></div>
-    <div class="stat"><div class="stat-value">4</div><div class="stat-label">Conferences</div></div>
-    <div class="stat"><div class="stat-value">USD 25K+</div><div class="stat-label">Research Funding</div></div>
-    <div class="stat"><div class="stat-value">3</div><div class="stat-label">Awards</div></div>
-    <div class="stat"><div class="stat-value">6+</div><div class="stat-label">Active Projects</div></div>
+    <div class="stat">
+      <div class="stat-value">7<span>+</span></div>
+      <div class="stat-label">Publications</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">4</div>
+      <div class="stat-label">Conferences</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">USD <span>25K</span></div>
+      <div class="stat-label">Research Funding</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">3</div>
+      <div class="stat-label">Awards</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">6<span>+</span></div>
+      <div class="stat-label">Active Projects</div>
+    </div>
   </div>
 </div>
 
 <section id="about">
   <div class="container">
-    <h2 class="section-title">About</h2>
-    <p class="section-subtitle">Background, affiliation & research focus</p>
-    <p style="margin-bottom:1.5rem; color: var(--text-muted); font-size:0.95rem; max-width:65ch;">My work sits at the intersection of geographic information systems, large language models, and public policy — particularly in the context of Indonesia's urban and regional development. Currently developing <strong>SIGAPP</strong>, an agentic geospatial AI system for education planning in Nusa Tenggara Timur (NTT).</p>
-    <div class="about-grid">
-      <div class="about-card">
+    <div class="section-header reveal">
+      <div class="section-label">Background</div>
+      <h2 class="section-title">About</h2>
+    </div>
+    <p class="about-intro reveal reveal-delay-1">My work sits at the intersection of <strong>geographic information systems</strong>, <strong>large language models</strong>, and public policy — particularly in the context of Indonesia's urban and regional development. Currently developing <strong>SIGAPP</strong>, an agentic geospatial AI system for education planning in Nusa Tenggara Timur (NTT).</p>
+    <div class="about-layout">
+      <div class="about-card reveal reveal-delay-2">
+        <div class="about-card-icon">🏛️</div>
         <h4>Affiliation</h4>
         <ul>
-          <li>MSc Geo-Information Science — Wageningen University & Research, NL</li>
+          <li>MSc Geo-Information Science — Wageningen University &amp; Research, NL</li>
           <li>Faculty Member — Bakrie University, South Jakarta</li>
           <li>Founder — GeoSDS Lab (Spatial Data Science Laboratory)</li>
         </ul>
       </div>
-      <div class="about-card">
+      <div class="about-card reveal reveal-delay-3">
+        <div class="about-card-icon">🔬</div>
         <h4>Research Interests</h4>
         <ul>
           <li>Agentic AI Systems for geospatial analysis</li>
-          <li>Geographic Vector Embeddings & spatial knowledge graphs</li>
-          <li>NLP & LLMs for Indonesian administrative data</li>
+          <li>Geographic Vector Embeddings &amp; spatial knowledge graphs</li>
+          <li>NLP &amp; LLMs for Indonesian administrative data</li>
           <li>PostGIS + LLM integration for spatial operations</li>
           <li>Education policy analytics with geospatial context</li>
         </ul>
@@ -199,45 +525,54 @@
 
 <section id="publications">
   <div class="container">
-    <h2 class="section-title">Publications</h2>
-    <p class="section-subtitle">7 peer-reviewed articles & book chapters · 4 international conferences · <a href="https://orcid.org/0000-0002-2171-0533" target="_blank">ORCID: 0000-0002-2171-0533</a></p>
+    <div class="section-header reveal">
+      <div class="section-label">Research Output</div>
+      <h2 class="section-title">Publications</h2>
+      <p class="section-subtitle">7 peer-reviewed articles &amp; book chapters · 4 international conferences · <a href="https://orcid.org/0000-0002-2171-0533" target="_blank">ORCID: 0000-0002-2171-0533</a></p>
+    </div>
+
     <div class="pub-year">2026</div>
-    <div class="pub-item">
+    <div class="pub-item reveal">
       <div class="pub-title">Making AI Outputs Match the Intended Goals (Validity)</div>
       <div class="pub-meta"><span class="pub-type book">Book Chapter</span>Al Hakim, S., Jailani, Z.F., et al. · IGI Global</div>
       <div class="pub-doi"><a href="https://doi.org/10.4018/979-8-3373-6935-8.ch001" target="_blank">DOI: 10.4018/979-8-3373-6935-8.ch001</a></div>
     </div>
+
     <div class="pub-year">2025</div>
-    <div class="pub-item">
+    <div class="pub-item reveal">
       <div class="pub-title">SiagaJakarta: An Agentic GeoAI Framework for Autonomous Geospatial Analysis of Emergency Services</div>
-      <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Syumanjaya, R.B., Saputra, R.D., & Rafi, H. · Proc. 2nd ICoCICs, IEEE Xplore</div>
+      <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Syumanjaya, R.B., Saputra, R.D., &amp; Rafi, H. · Proc. 2nd ICoCICs, IEEE Xplore</div>
       <div class="pub-doi"><a href="https://doi.org/10.1109/ICoCICs68032.2025.11384057" target="_blank">DOI: 10.1109/ICoCICs68032.2025.11384057</a></div>
     </div>
-    <div class="pub-item">
+    <div class="pub-item reveal reveal-delay-1">
       <div class="pub-title">Hybrid Machine Learning Predicts Flooding Using LSTM And Random Forests On Geodata</div>
       <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F. et al. · INTECOMS: Journal of Information Technology and Computer Science, 8(1)</div>
       <div class="pub-doi"><a href="https://doi.org/10.31539/intecoms.v8i1.13991" target="_blank">DOI: 10.31539/intecoms.v8i1.13991</a></div>
     </div>
+
     <div class="pub-year">2024</div>
-    <div class="pub-item">
+    <div class="pub-item reveal">
       <div class="pub-title">Comparison of the Performance of the VADER and RoBERTa Algorithms on Twitter</div>
-      <div class="pub-meta"><span class="pub-type journal">Journal</span>Nurmadewi, D., Jailani, Z.F., & Manik, N.K.S. · SISTEMASI, 13(4)</div>
+      <div class="pub-meta"><span class="pub-type journal">Journal</span>Nurmadewi, D., Jailani, Z.F., &amp; Manik, N.K.S. · SISTEMASI, 13(4)</div>
       <div class="pub-doi"><a href="https://doi.org/10.32520/stmsi.v13i4.4198" target="_blank">DOI: 10.32520/stmsi.v13i4.4198</a></div>
     </div>
+
     <div class="pub-year">2023</div>
-    <div class="pub-item">
+    <div class="pub-item reveal">
       <div class="pub-title">Mapping the Golden Hour: A Spatiotemporal Analysis of Ambulance Response Time in Urban Jakarta</div>
-      <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F., Nurmadewi, D., Sumanjaya, R.B., & Manik, N.K.S. · Geosains Kutai Basin, 6(2), 98–104</div>
+      <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F., Nurmadewi, D., Sumanjaya, R.B., &amp; Manik, N.K.S. · Geosains Kutai Basin, 6(2), 98–104</div>
       <div class="pub-doi"><a href="https://doi.org/10.30872/geofisunmul.v6i2.1188" target="_blank">DOI: 10.30872/geofisunmul.v6i2.1188</a></div>
     </div>
+
     <div class="pub-year">2021</div>
-    <div class="pub-item">
+    <div class="pub-item reveal">
       <div class="pub-title">A Machine Learning Approach to Study Tourist Interests and Predict Tourism Demand on Bonaire Island from Social Media Data</div>
-      <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Verweij, P., van der Wal, J.T., & van Lammeren, R. · Proc. 13th ICTS, IEEE</div>
+      <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Verweij, P., van der Wal, J.T., &amp; van Lammeren, R. · Proc. 13th ICTS, IEEE</div>
       <div class="pub-doi"><a href="https://doi.org/10.1109/ICTS52701.2021.9608497" target="_blank">DOI: 10.1109/ICTS52701.2021.9608497</a></div>
     </div>
+
     <div class="pub-year">2019</div>
-    <div class="pub-item">
+    <div class="pub-item reveal">
       <div class="pub-title">Assessing Indonesia Spatial Data Infrastructure Using R for Disaster Management</div>
       <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F. · International Journal on Advanced Science, Engineering, and Information Technology, 9(6)</div>
       <div class="pub-doi"><a href="https://doi.org/10.18517/ijaseit.9.6.4173" target="_blank">DOI: 10.18517/ijaseit.9.6.4173</a></div>
@@ -247,27 +582,33 @@
 
 <section id="grants">
   <div class="container">
-    <h2 class="section-title">Research Grants</h2>
-    <p class="section-subtitle">Total secured funding: USD 25,000 + IDR 68,400,000 (~USD 29,178 equivalent)</p>
-    <table class="grants-table">
+    <div class="section-header reveal">
+      <div class="section-label">Funding</div>
+      <h2 class="section-title">Research Grants</h2>
+      <p class="section-subtitle">Total secured: USD 25,000 + IDR 68,400,000 (≈ USD 29,178 equivalent)</p>
+    </div>
+    <table class="grants-table reveal">
       <thead><tr><th>Year</th><th>Project</th><th>Funder</th><th>Amount</th></tr></thead>
       <tbody>
         <tr>
           <td>2026</td>
-          <td><strong>Empowering Rural Communities in Indonesia through AI-Driven Agricultural Solutions</strong></td>
+          <td>
+            <div class="grant-top">★ Top Grant</div>
+            <strong>Empowering Rural Communities in Indonesia through AI-Driven Agricultural Solutions</strong>
+          </td>
           <td class="funder"><a href="http://dx.doi.org/10.13039/100020519" target="_blank">IEEE Computer Society</a><br>Washington D.C., US</td>
           <td class="amount">USD 25,000<br><small style="font-weight:400;color:var(--text-muted)">≈ IDR 404,000,000</small></td>
         </tr>
         <tr>
           <td>2025–2026</td>
-          <td>Land Use Classification & Change Detection in Indonesia's Urban Centers Using CNN and Sentinel-2 Imagery</td>
-          <td class="funder">Center for R&D, Bakrie University</td>
+          <td>Land Use Classification &amp; Change Detection in Indonesia's Urban Centers Using CNN and Sentinel-2 Imagery</td>
+          <td class="funder">Center for R&amp;D, Bakrie University</td>
           <td class="amount">IDR 20,000,000</td>
         </tr>
         <tr>
           <td>2023</td>
           <td>Geospatial Accessibility and Response Time Analysis for Emergency Ambulance Services in Jakarta</td>
-          <td class="funder">Open Mapping Hub Asia Pacific & OpenStreetMap Indonesia</td>
+          <td class="funder">Open Mapping Hub Asia Pacific &amp; OpenStreetMap Indonesia</td>
           <td class="amount">IDR 28,000,000</td>
         </tr>
         <tr>
@@ -283,18 +624,20 @@
 
 <section id="awards">
   <div class="container">
-    <h2 class="section-title">Awards & Honors</h2>
-    <p class="section-subtitle">Recognition in research and entrepreneurship</p>
+    <div class="section-header reveal">
+      <div class="section-label">Recognition</div>
+      <h2 class="section-title">Awards &amp; Honors</h2>
+    </div>
     <div class="awards-list">
-      <div class="award-item">
+      <div class="award-item reveal">
         <div class="award-icon">🥇</div>
         <div>
           <div class="award-year">2023</div>
           <div class="award-title">1st Place — Ideathon Tons-Of-Ideas Competition</div>
-          <div class="award-org">Ministry of State Apparatus Utilization & Bureaucratic Reform (PANRB) + USAID ERAT</div>
+          <div class="award-org">Ministry of State Apparatus Utilization &amp; Bureaucratic Reform (PANRB) + USAID ERAT</div>
         </div>
       </div>
-      <div class="award-item">
+      <div class="award-item reveal reveal-delay-1">
         <div class="award-icon">🏆</div>
         <div>
           <div class="award-year">2023</div>
@@ -302,7 +645,7 @@
           <div class="award-org">Indonesia Endowment Funds for Education (LPDP)</div>
         </div>
       </div>
-      <div class="award-item">
+      <div class="award-item reveal reveal-delay-2">
         <div class="award-icon">🎖️</div>
         <div>
           <div class="award-year">2022</div>
@@ -316,36 +659,57 @@
 
 <section id="projects">
   <div class="container">
-    <h2 class="section-title">Featured Projects</h2>
-    <p class="section-subtitle">Open-source research and development work</p>
+    <div class="section-header reveal">
+      <div class="section-label">Open Source</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Research and development work on GitHub</p>
+    </div>
     <div class="projects-grid">
-      <a class="project-card" href="https://github.com/zakiulfahmijailani/SIGAPP" target="_blank" rel="noopener">
-        <div class="project-name">SIGAPP</div>
+      <a class="project-card reveal" href="https://github.com/zakiulfahmijailani/SIGAPP" target="_blank" rel="noopener">
+        <div class="project-header">
+          <div class="project-name">SIGAPP</div>
+          <span class="project-arrow">↗</span>
+        </div>
         <div class="project-desc">Agentic GeoAI system for education planning in Nusa Tenggara Timur (NTT)</div>
         <div class="project-stack"><span class="stack-tag">TypeScript</span><span class="stack-tag">PostGIS</span><span class="stack-tag">LLM</span></div>
       </a>
-      <a class="project-card" href="https://github.com/zakiulfahmijailani/SIPEKA" target="_blank" rel="noopener">
-        <div class="project-name">SIPEKA</div>
-        <div class="project-desc">Curriculum & assessment management system for educational institutions</div>
+      <a class="project-card reveal reveal-delay-1" href="https://github.com/zakiulfahmijailani/SIPEKA" target="_blank" rel="noopener">
+        <div class="project-header">
+          <div class="project-name">SIPEKA</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <div class="project-desc">Curriculum &amp; assessment management system for educational institutions</div>
         <div class="project-stack"><span class="stack-tag">Next.js</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Supabase</span></div>
       </a>
-      <a class="project-card" href="https://github.com/zakiulfahmijailani/IndoVilExiOW" target="_blank" rel="noopener">
-        <div class="project-name">IndoVilExiOW</div>
-        <div class="project-desc">Village polygon extraction tool using OpenStreetMap & Wikipedia data</div>
+      <a class="project-card reveal reveal-delay-2" href="https://github.com/zakiulfahmijailani/IndoVilExiOW" target="_blank" rel="noopener">
+        <div class="project-header">
+          <div class="project-name">IndoVilExiOW</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <div class="project-desc">Village polygon extraction tool using OpenStreetMap &amp; Wikipedia data</div>
         <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">OSM</span></div>
       </a>
-      <a class="project-card" href="https://github.com/zakiulfahmijailani/PetaBencana.id_BulkDownloader" target="_blank" rel="noopener">
-        <div class="project-name">PetaBencana Downloader</div>
-        <div class="project-desc">Bulk API downloader & GeoJSON converter for Indonesia disaster data</div>
+      <a class="project-card reveal reveal-delay-3" href="https://github.com/zakiulfahmijailani/PetaBencana.id_BulkDownloader" target="_blank" rel="noopener">
+        <div class="project-header">
+          <div class="project-name">PetaBencana Downloader</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <div class="project-desc">Bulk API downloader &amp; GeoJSON converter for Indonesia disaster data</div>
         <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">GeoJSON</span></div>
       </a>
-      <a class="project-card" href="https://github.com/zakiulfahmijailani/Ambulance_Response_Time_Jakarta" target="_blank" rel="noopener">
-        <div class="project-name">Ambulance Response Time Jakarta</div>
+      <a class="project-card reveal reveal-delay-1" href="https://github.com/zakiulfahmijailani/Ambulance_Response_Time_Jakarta" target="_blank" rel="noopener">
+        <div class="project-header">
+          <div class="project-name">Ambulance Response Jakarta</div>
+          <span class="project-arrow">↗</span>
+        </div>
         <div class="project-desc">Spatiotemporal analysis of ambulance response across Jakarta districts</div>
         <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Jupyter</span><span class="stack-tag">QGIS</span></div>
       </a>
-      <a class="project-card" href="https://github.com/zakiulfahmijailani/undang-io" target="_blank" rel="noopener">
-        <div class="project-name">undang-io</div>
+      <a class="project-card reveal reveal-delay-2" href="https://github.com/zakiulfahmijailani/undang-io" target="_blank" rel="noopener">
+        <div class="project-header">
+          <div class="project-name">undang-io</div>
+          <span class="project-arrow">↗</span>
+        </div>
         <div class="project-desc">Digital invitation web platform with dashboard and RSVP management</div>
         <div class="project-stack"><span class="stack-tag">Next.js</span><span class="stack-tag">TypeScript</span></div>
       </a>
@@ -354,9 +718,54 @@
 </section>
 
 <footer>
-  <p>© 2026 Zakiul Fahmi Jailani, MSc · Bakrie University, Jakarta, Indonesia</p>
-  <p style="margin-top:0.5rem;"><a href="mailto:zakiul.jailani@bakrie.ac.id">zakiul.jailani@bakrie.ac.id</a> · <a href="https://github.com/zakiulfahmijailani" target="_blank">GitHub</a> · <a href="https://orcid.org/0000-0002-2171-0533" target="_blank">ORCID</a> · <a href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank">Google Scholar</a></p>
+  <div class="footer-name">Zakiul Fahmi Jailani</div>
+  <div class="footer-role">Lecturer · Researcher · Developer</div>
+  <div class="footer-links">
+    <a href="mailto:zakiul.jailani@bakrie.ac.id">Email</a>
+    <a href="https://github.com/zakiulfahmijailani" target="_blank">GitHub</a>
+    <a href="https://orcid.org/0000-0002-2171-0533" target="_blank">ORCID</a>
+    <a href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank">Google Scholar</a>
+    <a href="https://www.linkedin.com/in/zakiulfahmi/" target="_blank">LinkedIn</a>
+  </div>
+  <div class="footer-copy">© 2026 Zakiul Fahmi Jailani, MSc · Bakrie University, Jakarta, Indonesia</div>
 </footer>
 
+<script>
+  // Dark mode toggle
+  (function(){
+    const root = document.documentElement;
+    const toggle = document.querySelector('[data-theme-toggle]');
+    const sys = window.matchMedia('(prefers-color-scheme: dark)');
+    let theme = sys.matches ? 'dark' : 'light';
+    root.setAttribute('data-theme', theme);
+    function setIcon(t){
+      if(!toggle) return;
+      toggle.innerHTML = t === 'dark'
+        ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+        : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    }
+    setIcon(theme);
+    if(toggle) toggle.addEventListener('click', function(){
+      theme = theme === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', theme);
+      setIcon(theme);
+    });
+  })();
+
+  // Scroll reveal
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    if(!els.length) return;
+    const io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
 </body>
 </html>
