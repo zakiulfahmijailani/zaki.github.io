@@ -1155,33 +1155,6 @@
     }, { threshold: 0.1 });
     els.forEach(function(el){ io.observe(el); });
   })();
-
-  /* MailerLite form submit handler */
-  (function(){
-    var form = document.querySelector('#mlb2-subscribe form');
-    if(!form) return;
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var submitBtn = form.querySelector('button[type="submit"]');
-      var loadingBtn = form.querySelector('button.loading');
-      var successBody = document.querySelector('#mlb2-subscribe .ml-form-successBody');
-      var formBody = document.querySelector('#mlb2-subscribe .ml-form-embedBody');
-      if(submitBtn) submitBtn.style.display = 'none';
-      if(loadingBtn) loadingBtn.style.display = '';
-
-      var data = new FormData(form);
-      var params = new URLSearchParams();
-      data.forEach(function(v, k){ params.append(k, v); });
-
-      fetch(form.action + '?' + params.toString(), {
-        method: 'GET',
-        mode: 'no-cors'
-      }).finally(function(){
-        if(formBody) formBody.style.display = 'none';
-        if(successBody) successBody.style.display = '';
-      });
-    });
-  })();
 </script>
 
 <!-- MailerLite Universal -->
