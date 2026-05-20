@@ -269,349 +269,365 @@
     .hero-desc {
       font-size: 1rem;
       color: rgba(249,249,247,0.65) !important;
-      max-width: 50ch;
-      margin-bottom: 2rem;
-      line-height: 1.78;
+      line-height: 1.7;
+      margin-bottom: 1.6rem;
+      max-width: 52ch;
     }
-    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: rgba(249,249,247,0.06);
-      border: 1px solid rgba(249,249,247,0.12);
-      color: rgba(249,249,247,0.8) !important;
-      border-radius: 99px;
-      padding: 0.35rem 0.9rem;
-      font-size: 0.78rem; font-weight: 500;
-      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 0.7rem;
+      margin-bottom: 1.8rem;
     }
-    .hero-badge:hover { background: rgba(204,125,94,0.18); border-color: rgba(204,125,94,0.4); color: #fff !important; }
-    .hero-badge svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
-
-    .avatar-wrap { position: relative; width: 192px; height: 192px; flex-shrink: 0; }
-    .avatar-ring {
-      position: absolute; inset: -6px;
-      border-radius: 50%;
-      border: 2px solid rgba(204,125,94,0.35);
-      animation: ring-spin 9s linear infinite;
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.01em;
+      border: none; cursor: pointer;
+      transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
+      text-decoration: none;
     }
-    .avatar-ring::after {
-      content: '';
-      position: absolute;
-      top: -3px; left: 50%;
-      transform: translateX(-50%);
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #CC7D5E;
-      box-shadow: 0 0 10px #CC7D5E;
-    }
-    @keyframes ring-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-    .hero-avatar {
-      width: 192px; height: 192px;
-      border-radius: 50%;
-      border: 3px solid rgba(204,125,94,0.25);
-      object-fit: cover;
-      box-shadow: 0 16px 48px rgba(0,0,0,0.55);
-      position: relative; z-index: 1;
-    }
-    .avatar-badge {
-      position: absolute; bottom: 8px; right: 0px; z-index: 2;
-      background: #CC7D5E;
+    .btn:active { transform: scale(0.97); }
+    .btn-primary {
+      background: var(--accent);
       color: #fff;
-      font-size: 0.63rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.07em;
-      padding: 0.25rem 0.6rem;
-      border-radius: 99px;
-      border: 2px solid #1e1e1c;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-      white-space: nowrap;
     }
+    .btn-primary:hover { background: var(--accent-hover); color: #fff; box-shadow: 0 4px 16px rgba(204,125,94,0.35); }
+    .btn-ghost {
+      background: rgba(249,249,247,0.07);
+      color: rgba(249,249,247,0.75);
+      border: 1px solid rgba(249,249,247,0.1);
+    }
+    .btn-ghost:hover { background: rgba(249,249,247,0.12); color: #fff; }
+    .btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
 
-    /* === STATS === */
-    .stats-bar {
-      background: #1e1e1c;
-      padding: 1.5rem 2rem;
-      border-bottom: 1px solid rgba(249,249,247,0.05);
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
     }
-    .stats-inner { max-width: 960px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; }
-    .stat { text-align: center; padding: 0 1.5rem; border-right: 1px solid rgba(249,249,247,0.08); flex: 1; }
-    .stat:last-child { border-right: none; }
-    .stat-value {
-      font-size: clamp(1.6rem, 3vw, 2.1rem);
-      font-weight: 800;
-      color: #F9F9F7;
-      font-variant-numeric: tabular-nums;
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-    .stat-value span { color: #CC7D5E; }
-    .stat-label { font-size: 0.67rem; color: rgba(249,249,247,0.38); text-transform: uppercase; letter-spacing: 0.1em; }
-
-    /* === WHAT'S NEW === */
-    .whats-new {
-      padding: 3.5rem 2rem;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-    .whats-new-inner { max-width: 960px; margin: 0 auto; }
-    .whats-new-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .whats-new-title-group .wn-label {
-      font-size: 0.67rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.13em;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-    }
-    .whats-new-title-group h2 {
-      font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
-      font-weight: 400;
-      color: var(--text);
-      line-height: 1.2;
-    }
-    .wn-tabs {
-      display: flex;
-      gap: 0.35rem;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 99px;
-      padding: 0.25rem;
-    }
-    .wn-tab {
-      font-size: 0.78rem; font-weight: 500;
-      padding: 0.3rem 0.9rem;
-      border-radius: 99px;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: background 0.18s, color 0.18s;
-    }
-    .wn-tab:hover { color: var(--text); }
-    .wn-tab.active { background: var(--accent); color: #fff; }
-
-    .wn-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 1rem;
-    }
-    .wn-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.22s, border-color 0.22s, transform 0.22s;
-      cursor: pointer;
-    }
-    .wn-card:hover { box-shadow: var(--shadow-md); border-color: var(--accent-border); transform: translateY(-2px); }
-    .wn-card.announcement { grid-column: 1; grid-row: 1 / 3; }
-    .wn-card.article { grid-column: 2; grid-row: 1; }
-    .wn-card.project { grid-column: 2; grid-row: 2; }
-    .wn-thumb { width: 100%; aspect-ratio: 16/8; object-fit: cover; display: block; background: var(--surface2); }
-    .wn-card.announcement .wn-thumb { aspect-ratio: 16/9; }
-    .wn-card.article .wn-thumb, .wn-card.project .wn-thumb { aspect-ratio: 16/7; }
-    .wn-thumb-placeholder {
-      width: 100%; display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem; background: var(--surface2); color: var(--text-faint); flex-shrink: 0;
-    }
-    .wn-card.announcement .wn-thumb-placeholder { aspect-ratio: 16/9; font-size: 3.5rem; }
-    .wn-card.article .wn-thumb-placeholder, .wn-card.project .wn-thumb-placeholder { aspect-ratio: 16/7; }
-    .wn-body { padding: 1.25rem 1.35rem 1.4rem; display: flex; flex-direction: column; flex: 1; }
-    .wn-card.announcement .wn-body { padding: 1.5rem 1.6rem 1.65rem; }
-    .wn-type-badge {
+    .badge {
       display: inline-flex; align-items: center; gap: 0.35rem;
-      font-size: 0.63rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
-      padding: 0.18rem 0.6rem; border-radius: 4px; margin-bottom: 0.7rem; width: fit-content;
+      font-size: 0.72rem; font-weight: 500;
+      color: rgba(249,249,247,0.55);
+      background: rgba(249,249,247,0.05);
+      border: 1px solid rgba(249,249,247,0.09);
+      border-radius: 99px;
+      padding: 0.25rem 0.7rem;
+      text-decoration: none;
+      transition: color 0.18s, background 0.18s, border-color 0.18s;
     }
-    .wn-type-badge.type-announce { background: rgba(234,179,8,0.12); color: #ca8a04; }
-    [data-theme="dark"] .wn-type-badge.type-announce { color: #eab308; }
-    .wn-type-badge.type-article { background: rgba(14,165,233,0.12); color: #0284c7; }
-    [data-theme="dark"] .wn-type-badge.type-article { color: #38bcd4; }
-    .wn-type-badge.type-project { background: var(--accent-dim); color: var(--accent); }
-    .wn-card-title { font-family: var(--font-display); font-weight: 400; color: var(--text); line-height: 1.3; margin-bottom: 0.5rem; }
-    .wn-card.announcement .wn-card-title { font-size: clamp(1.1rem, 2vw, 1.45rem); }
-    .wn-card.article .wn-card-title, .wn-card.project .wn-card-title { font-size: 0.97rem; }
-    .wn-card-desc { font-size: 0.845rem; color: var(--text-muted); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
-    .wn-card.announcement .wn-card-desc { font-size: 0.93rem; }
-    .wn-card-meta { display: flex; align-items: center; justify-content: space-between; font-size: 0.73rem; color: var(--text-faint); margin-top: auto; }
-    .wn-card-cta { font-size: 0.78rem; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 0.3rem; transition: gap 0.18s, color 0.18s; }
-    .wn-card:hover .wn-card-cta { gap: 0.55rem; color: var(--accent-hover); }
-    .wn-card.hidden { display: none; }
+    .badge:hover {
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-color: var(--accent-border);
+    }
+    .badge svg { width: 11px; height: 11px; }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    .hero-photo {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-photo img {
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2.5px solid rgba(204,125,94,0.3);
+      box-shadow: 0 0 0 6px rgba(204,125,94,0.07), var(--shadow-md);
+    }
 
     /* === SECTIONS === */
-    .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
-    section { padding: 4rem 2rem; }
-    section:nth-child(even) { background: var(--surface); }
-    .section-header { margin-bottom: 2.5rem; }
-    .section-label { font-size: 0.67rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.13em; color: var(--accent); margin-bottom: 0.4rem; }
-    .section-title { font-family: var(--font-display); font-size: clamp(1.5rem, 2.5vw, 1.9rem); font-weight: 400; color: var(--text); line-height: 1.2; }
-    .section-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-top: 0.35rem; }
-    .section-subtitle a { color: var(--teal); }
-    .section-subtitle a:hover { color: var(--teal-hover); }
-
-    /* === ABOUT === */
-    .about-intro { font-size: 0.95rem; color: var(--text-muted); line-height: 1.82; max-width: 65ch; margin-bottom: 1.75rem; }
-    .about-intro strong { color: var(--text); }
-    .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-    .about-card { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem 1.5rem; transition: box-shadow 0.2s, border-color 0.2s; }
-    .about-card:hover { box-shadow: var(--shadow-sm); border-color: var(--accent-border); }
-    .about-card-icon { font-size: 1.3rem; margin-bottom: 0.6rem; }
-    .about-card h4 { font-size: 0.69rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); margin-bottom: 0.7rem; font-weight: 600; }
-    .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .about-card li { font-size: 0.875rem; color: var(--text-muted); display: flex; gap: 0.5rem; align-items: flex-start; }
-    .about-card li::before { content: '→'; color: var(--accent); flex-shrink: 0; margin-top: 0.05rem; }
-
-    /* === PUBLICATIONS === */
-    .pub-year { font-size: 0.69rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; color: var(--accent); margin: 2rem 0 0.9rem; display: flex; align-items: center; gap: 0.75rem; }
-    .pub-year:first-child { margin-top: 0; }
-    .pub-year::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .pub-item { border-left: 2px solid var(--border); padding: 1rem 0 1rem 1.4rem; margin-bottom: 0.1rem; transition: border-color 0.18s, padding-left 0.2s; }
-    .pub-item:hover { border-left-color: var(--accent); padding-left: 1.65rem; }
-    .pub-title { font-weight: 600; color: var(--text); font-size: 0.93rem; margin-bottom: 0.3rem; line-height: 1.45; }
-    .pub-meta { font-size: 0.815rem; color: var(--text-muted); margin-bottom: 0.3rem; }
-    .pub-type { display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; padding: 0.15rem 0.55rem; border-radius: 4px; margin-right: 0.4rem; }
-    .pub-type.journal   { background: rgba(14,165,233,0.12); color: #38bcd4; }
-    .pub-type.conference{ background: rgba(204,125,94,0.14); color: #e8997a; }
-    .pub-type.book      { background: rgba(134,187,100,0.13); color: #8dc86a; }
-    .pub-doi { font-size: 0.79rem; }
-    .pub-doi a { color: var(--teal); }
-    .pub-doi a:hover { color: var(--teal-hover); }
-
-    /* === GRANTS === */
-    .grants-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-    .grants-table th { text-align: left; font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); border-bottom: 1px solid var(--border-strong); padding: 0.5rem 0.9rem; font-weight: 600; }
-    .grants-table td { padding: 1rem 0.9rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-    .grants-table tr:last-child td { border-bottom: none; }
-    .grants-table tbody tr { transition: background 0.15s; }
-    .grants-table tbody tr:hover td { background: var(--accent-dim); }
-    .amount { font-weight: 700; color: var(--text); white-space: nowrap; }
-    .funder { color: var(--text-muted); font-size: 0.8rem; }
-    .funder a { color: var(--teal); }
-    .grant-top { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); background: var(--accent-dim); border-radius: 4px; padding: 0.15rem 0.5rem; margin-bottom: 0.35rem; }
-
-    /* === AWARDS === */
-    .awards-list { display: flex; flex-direction: column; gap: 0.8rem; }
-    .award-item { display: flex; gap: 1.1rem; align-items: flex-start; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.3rem; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; }
-    .award-item:hover { box-shadow: var(--shadow-sm); transform: translateX(5px); border-color: var(--accent-border); }
-    .award-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1; }
-    .award-title { font-weight: 600; font-size: 0.93rem; margin-bottom: 0.2rem; color: var(--text); }
-    .award-org { font-size: 0.815rem; color: var(--text-muted); }
-    .award-year { font-size: 0.67rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
-
-    /* === PROJECTS === */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 1rem; }
-    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.35rem; transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; gap: 0.6rem; }
-    .project-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); border-color: var(--accent-border); }
-    .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
-    .project-name { font-weight: 700; font-size: 0.95rem; color: var(--text); }
-    .project-arrow { color: var(--text-faint); font-size: 1rem; transition: color 0.18s, transform 0.18s; line-height: 1; }
-    .project-card:hover .project-arrow { color: var(--accent); transform: translate(2px, -2px); }
-    .project-desc { font-size: 0.845rem; color: var(--text-muted); line-height: 1.55; flex: 1; }
-    .project-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.4rem; }
-    .stack-tag { font-size: 0.67rem; font-weight: 600; background: var(--accent-dim); color: var(--accent); border-radius: 4px; padding: 0.18rem 0.5rem; border: 1px solid var(--accent-border); }
-
-    /* === SUBSCRIBE / NEWSLETTER === */
-    .subscribe-section {
-      background: #1e1e1c;
+    section {
       padding: 4rem 2rem;
-      border-top: 1px solid rgba(249,249,247,0.06);
-      border-bottom: 1px solid rgba(249,249,247,0.06);
-      position: relative;
-      overflow: hidden;
     }
-    .subscribe-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(rgba(204,125,94,0.07) 1px, transparent 1px);
-      background-size: 24px 24px;
-      pointer-events: none;
-    }
-    .subscribe-inner {
-      max-width: 560px;
+    .section-inner {
+      max-width: 960px;
       margin: 0 auto;
-      text-align: center;
-      position: relative; z-index: 1;
     }
-    .subscribe-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: var(--accent-dim);
-      border: 1px solid var(--accent-border);
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.25rem;
-    }
-    .subscribe-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 2; }
-    .subscribe-label {
-      font-size: 0.67rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.13em;
+    .section-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
       color: var(--accent);
       margin-bottom: 0.5rem;
     }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 400;
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    /* === ABOUT === */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+    .about-body p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-sidebar {}
+    .info-block { margin-bottom: 1.8rem; }
+    .info-block-label {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-faint);
+      margin-bottom: 0.6rem;
+    }
+    .info-list { list-style: none; }
+    .info-list li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .info-list li:last-child { border-bottom: none; }
+    .info-list li::before { content: '→'; color: var(--accent); font-size: 0.7rem; flex-shrink: 0; }
+
+    /* === RESEARCH === */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .research-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      transition: border-color 0.18s, box-shadow 0.18s;
+    }
+    .research-card:hover {
+      border-color: var(--accent-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .research-card-icon {
+      width: 36px; height: 36px;
+      background: var(--accent-dim);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .research-card-icon svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+    .research-card h3 {
+      font-size: 0.9rem; font-weight: 600;
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+    .research-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* === PROJECTS === */
+    .projects-list {
+      display: flex; flex-direction: column; gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .project-item {
+      background: var(--surface);
+      padding: 1.3rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.18s;
+    }
+    .project-item:last-child { border-bottom: none; }
+    .project-item:hover { background: var(--surface2); }
+    .project-name {
+      font-size: 0.92rem; font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .project-desc {
+      font-size: 0.81rem;
+      color: var(--text-muted);
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+    .tag {
+      font-size: 0.68rem; font-weight: 500;
+      padding: 0.15rem 0.55rem;
+      border-radius: 99px;
+      background: var(--surface3);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .project-link {
+      font-size: 0.78rem;
+      color: var(--accent);
+      white-space: nowrap;
+      display: flex; align-items: center; gap: 0.3rem;
+      opacity: 0.7;
+      transition: opacity 0.18s;
+    }
+    .project-link:hover { opacity: 1; }
+    .project-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+    .project-status {
+      font-size: 0.67rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 99px;
+    }
+    .status-active { background: rgba(14,165,233,0.12); color: var(--teal); border: 1px solid rgba(14,165,233,0.25); }
+    .status-ongoing { background: rgba(204,125,94,0.12); color: var(--accent); border: 1px solid var(--accent-border); }
+    .status-complete { background: rgba(100,200,100,0.08); color: #6db36d; border: 1px solid rgba(100,200,100,0.2); }
+
+    /* === PUBLICATIONS === */
+    .pubs-list { display: flex; flex-direction: column; gap: 1.2rem; }
+    .pub-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.3rem 1.5rem;
+      transition: border-color 0.18s;
+    }
+    .pub-item:hover { border-color: var(--accent-border); }
+    .pub-meta {
+      display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .pub-type {
+      font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 0.15rem 0.55rem;
+      border-radius: 99px;
+    }
+    .pub-journal { background: rgba(14,165,233,0.1); color: var(--teal); border: 1px solid rgba(14,165,233,0.2); }
+    .pub-conference { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); }
+    .pub-year { font-size: 0.75rem; color: var(--text-faint); }
+    .pub-title {
+      font-size: 0.92rem; font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.35rem;
+    }
+    .pub-authors { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+    .pub-venue { font-size: 0.78rem; color: var(--text-faint); font-style: italic; }
+    .pub-links { display: flex; gap: 0.8rem; margin-top: 0.7rem; }
+    .pub-link {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--accent);
+      display: flex; align-items: center; gap: 0.25rem;
+      transition: opacity 0.18s;
+      opacity: 0.75;
+    }
+    .pub-link:hover { opacity: 1; }
+    .pub-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* === TEACHING === */
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    .course-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      transition: border-color 0.18s;
+    }
+    .course-card:hover { border-color: var(--accent-border); }
+    .course-code {
+      font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .course-name {
+      font-size: 0.88rem; font-weight: 600;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+    .course-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* === SUBSCRIBE === */
+    .subscribe-section {
+      background: linear-gradient(135deg, rgba(204,125,94,0.08) 0%, rgba(14,165,233,0.05) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .subscribe-section::before { display: none; }
+    .subscribe-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .subscribe-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-dim);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .subscribe-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 2; }
+    .subscribe-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
     .subscribe-title {
       font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-size: clamp(1.5rem, 3vw, 2rem);
       font-weight: 400;
-      color: #F9F9F7;
-      line-height: 1.25;
       margin-bottom: 0.75rem;
     }
     .subscribe-desc {
       font-size: 0.9rem;
-      color: rgba(249,249,247,0.5);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-      max-width: 44ch;
-      margin-left: auto; margin-right: auto;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      max-width: 46ch;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    /* Subscribe form */
     .subscribe-form {
       display: flex;
       gap: 0.6rem;
-      align-items: flex-start;
-      flex-wrap: wrap;
       justify-content: center;
     }
     .subscribe-email-field {
       flex: 1;
-      min-width: 200px;
+      max-width: 280px;
     }
     .subscribe-email-field input[type="email"] {
       width: 100%;
-      background: rgba(249,249,247,0.05);
-      border: 1px solid rgba(249,249,247,0.15);
-      border-radius: var(--radius);
-      color: #F9F9F7;
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      padding: 0.7rem 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.9rem;
+      font-size: 0.88rem;
       outline: none;
-      transition: border-color 0.18s, background 0.18s;
+      transition: border-color 0.18s;
+      font-family: var(--font-body);
     }
     .subscribe-email-field input[type="email"]:focus {
       border-color: var(--accent);
-      background: rgba(204,125,94,0.07);
     }
     .subscribe-email-field input[type="email"]::placeholder { color: rgba(249,249,247,0.3); }
     .subscribe-btn {
       background: var(--accent);
       color: #fff;
-      font-family: var(--font-body);
-      font-size: 0.875rem;
-      font-weight: 600;
       border: none;
-      border-radius: var(--radius);
-      padding: 0.7rem 1.4rem;
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 1.2rem;
+      font-size: 0.85rem; font-weight: 600;
       cursor: pointer;
-      transition: background 0.18s, opacity 0.18s;
+      transition: background 0.18s, transform 0.12s;
+      font-family: var(--font-body);
       white-space: nowrap;
     }
     .subscribe-btn:hover { background: var(--accent-hover); }
@@ -619,59 +635,133 @@
     /* Success state — shown when ?subscribed=1 in URL */
     .subscribe-success {
       display: none;
-      text-align: center;
-      padding: 1.5rem;
-      background: rgba(204,125,94,0.08);
-      border: 1px solid var(--accent-border);
+      padding: 1.2rem;
+      background: rgba(100,200,100,0.08);
+      border: 1px solid rgba(100,200,100,0.2);
       border-radius: var(--radius);
-      color: #F9F9F7;
-      font-size: 0.9rem;
+      margin-top: 1rem;
     }
     .subscribe-success h4 {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: var(--accent);
-      margin-bottom: 0.35rem;
+      color: #6db36d;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
     }
     .subscribe-privacy {
+      font-size: 0.75rem;
+      color: var(--text-faint);
       margin-top: 1rem;
-      font-size: 0.72rem;
-      color: rgba(249,249,247,0.28);
     }
     .subscribe-privacy a { color: rgba(249,249,247,0.4); text-decoration: underline; }
     .subscribe-privacy a:hover { color: var(--accent); }
 
     /* === FOOTER === */
-    footer { background: #1a1a18; color: rgba(249,249,247,0.4); padding: 3rem 2rem 2.5rem; text-align: center; border-top: 1px solid rgba(249,249,247,0.05); }
-    .footer-name { font-family: var(--font-display); font-size: 1.3rem; color: rgba(249,249,247,0.8); margin-bottom: 0.3rem; }
-    .footer-role { font-size: 0.75rem; color: rgba(249,249,247,0.35); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 1.25rem; }
-    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .footer-links a { color: rgba(249,249,247,0.5); font-size: 0.82rem; transition: color 0.18s; }
+    footer {
+      background: #1a1a18;
+      border-top: 1px solid rgba(249,249,247,0.06);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .footer-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: rgba(249,249,247,0.7);
+      margin-bottom: 0.3rem;
+    }
+    .footer-role {
+      font-size: 0.78rem;
+      color: rgba(249,249,247,0.3);
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links a {
+      font-size: 0.8rem;
+      color: rgba(249,249,247,0.35);
+      transition: color 0.18s;
+    }
     .footer-links a:hover { color: var(--accent); }
-    .footer-copy { font-size: 0.73rem; color: rgba(249,249,247,0.22); }
+    .footer-copy {
+      font-size: 0.72rem;
+      color: rgba(249,249,247,0.2);
+    }
 
-    /* === SCROLL REVEAL === */
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1), transform 0.55s cubic-bezier(0.16,1,0.3,1); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.08s; }
-    .reveal-delay-2 { transition-delay: 0.16s; }
-    .reveal-delay-3 { transition-delay: 0.24s; }
-    .reveal-delay-4 { transition-delay: 0.32s; }
+    /* === DIVIDER === */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* === REVEAL ANIMATION === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* === MailerLite Embed Overrides === */
+    #mlb2-41564125.ml-form-embedContainer {
+      margin-top: 1.5rem;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper {
+      background-color: transparent !important;
+      border: none !important;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody {
+      padding: 0 !important;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent {
+      display: none;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+      background-color: var(--surface) !important;
+      color: var(--text) !important;
+      border-color: var(--border-strong) !important;
+      font-family: var(--font-body) !important;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+      background-color: var(--accent) !important;
+      font-family: var(--font-body) !important;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+      background-color: var(--accent-hover) !important;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
+      padding: 1rem 0 0 !important;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+      color: #6db36d !important;
+      font-family: var(--font-display) !important;
+    }
+    #mlb2-41564125.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+      color: var(--text-muted) !important;
+      font-family: var(--font-body) !important;
+    }
 
     /* === RESPONSIVE === */
-    @media (max-width: 700px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .avatar-wrap { width: 130px; height: 130px; margin: 0 auto; }
-      .hero-avatar { width: 130px; height: 130px; }
-      .about-layout { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-      .stats-inner { justify-content: flex-start; gap: 1rem; }
-      .stat { padding: 0 0.75rem; flex: 0 0 auto; border-right: none; }
-      section { padding: 2.75rem 1.25rem; }
-      .wn-grid { grid-template-columns: 1fr; }
-      .wn-card.announcement, .wn-card.article, .wn-card.project { grid-column: 1; grid-row: auto; }
-      .whats-new-header { flex-direction: column; align-items: flex-start; }
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo { order: -1; }
+      .hero-photo img { width: 130px; height: 130px; margin: 0 auto; }
+      .hero-actions { justify-content: center; }
+      .hero-badges { justify-content: center; }
+      .hero-desc { margin-left: auto; margin-right: auto; }
+      .about-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 3rem 1.25rem; }
+    }
+    @media (max-width: 600px) {
+      .nav-links a[href="#research"],
+      .nav-links a[href="#teaching"] { display: none; }
       .subscribe-form { flex-direction: column; }
       .subscribe-email-field { min-width: 0; width: 100%; }
       .subscribe-btn { width: 100%; }
@@ -680,351 +770,390 @@
 </head>
 <body>
 
-<nav>
-  <span class="nav-brand">
-    <span class="nav-dot"></span>
-    Zakiul Fahmi Jailani
-  </span>
-  <div class="nav-links">
-    <a href="#whats-new">What's New</a>
-    <a href="#about">About</a>
-    <a href="#publications">Publications</a>
-    <a href="#grants">Grants</a>
-    <a href="#awards">Awards</a>
-    <a href="#projects">Projects</a>
-    <button class="theme-toggle" data-theme-toggle aria-label="Toggle light mode">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
+<!-- Skip to content -->
+<a href="#main-content" class="sr-only" style="position:absolute;top:-100px;left:0;background:var(--accent);color:#fff;padding:0.5rem 1rem;z-index:9999;border-radius:0 0 var(--radius-sm) 0;transition:top 0.2s" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to main content</a>
+
+<!-- ===== NAV ===== -->
+<nav aria-label="Main navigation">
+  <a class="nav-brand" href="/">
+    <span class="nav-dot" aria-hidden="true"></span>
+    Zakiul Fahmi
+  </a>
+  <div class="nav-links" role="list">
+    <a href="#about" role="listitem">About</a>
+    <a href="#research" role="listitem">Research</a>
+    <a href="#projects" role="listitem">Projects</a>
+    <a href="#publications" role="listitem">Publications</a>
+    <a href="#teaching" role="listitem">Teaching</a>
+    <a href="#subscribe" role="listitem">Newsletter</a>
   </div>
+  <button class="theme-toggle" aria-label="Toggle theme" data-theme-toggle title="Toggle light/dark mode">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  </button>
 </nav>
 
-<section class="hero">
+<!-- ===== HERO ===== -->
+<header class="hero" id="main-content">
   <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Bakrie University · Jakarta, Indonesia
+    <div class="hero-text">
+      <div class="hero-eyebrow" aria-label="Status: Actively researching">
+        <span class="nav-dot" aria-hidden="true"></span>
+        Actively Researching
       </div>
       <h1 class="hero-name">
         Zakiul Fahmi Jailani
-        <em>M.Sc. Geo-Information Science</em>
+        <em>MSc · Bakrie University, Jakarta</em>
       </h1>
-      <p class="hero-desc">Researcher in Agentic GeoAI, spatial data science, and educational technology. Developing AI systems for education planning in Eastern Indonesia.</p>
-      <div class="hero-badges">
-        <a class="hero-badge" href="mailto:zakiul.jailani@bakrie.ac.id">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email
+      <p class="hero-desc">
+        Researcher and lecturer building agentic GeoAI systems for education planning in Indonesia. Working at the intersection of spatial data, large language models, and public policy.
+      </p>
+      <div class="hero-actions">
+        <a href="mailto:zakiul.jailani@bakrie.ac.id" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
         </a>
-        <a class="hero-badge" href="https://orcid.org/0000-0002-2171-0533" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-          ORCID
+        <a href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Scholar
         </a>
-        <a class="hero-badge" href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 0 1 .665 6.479A11.952 11.952 0 0 0 12 20.055a11.952 11.952 0 0 0-6.824-2.998 12.078 12.078 0 0 1 .665-6.479L12 14z"/></svg>
-          Google Scholar
-        </a>
-        <a class="hero-badge" href="https://github.com/zakiulfahmijailani" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <a href="https://github.com/zakiulfahmijailani" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           GitHub
         </a>
-        <a class="hero-badge" href="https://www.linkedin.com/in/zakiul-fahmi-jailani/" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://orcid.org/0000-0002-2171-0533" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+          ORCID
+        </a>
+      </div>
+      <div class="hero-badges" aria-label="Profile links">
+        <a href="https://www.linkedin.com/in/zakiul-fahmi-jailani/" target="_blank" rel="noopener noreferrer" class="badge" aria-label="LinkedIn profile">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           LinkedIn
         </a>
-        <a class="hero-badge" href="https://www.instagram.com/zakiul_fahmi_jailani/?hl=en" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        <a href="https://www.instagram.com/zakiul_fahmi_jailani/?hl=en" target="_blank" rel="noopener noreferrer" class="badge" aria-label="Instagram profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           Instagram
         </a>
+        <span class="badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          GeoAI · NLP · EdTech
+        </span>
+        <span class="badge">📍 Jakarta, Indonesia</span>
       </div>
     </div>
-    <div class="avatar-wrap">
-      <div class="avatar-ring"></div>
-      <img class="hero-avatar" src="./profile.jpg" alt="Zakiul Fahmi Jailani" width="192" height="192" loading="eager">
-      <span class="avatar-badge">GeoAI · NLP</span>
+    <div class="hero-photo">
+      <img
+        src="profile.jpg"
+        alt="Zakiul Fahmi Jailani — GeoAI Researcher and Lecturer at Bakrie University, Jakarta"
+        width="180"
+        height="180"
+        loading="eager"
+        onerror="this.style.display='none'"
+      >
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" aria-labelledby="about-heading">
+  <div class="section-inner reveal">
+    <div class="section-label">Background</div>
+    <h2 class="section-title" id="about-heading">About Me</h2>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          I am a lecturer and researcher at <strong>Bakrie University, Jakarta</strong>, specialising in agentic GeoAI, spatial data science, and the application of large language models to geographic problems. My work bridges academic research and practical system development for public sector challenges in Indonesia.
+        </p>
+        <p>
+          My doctoral research focuses on building <em>SIGAPP</em> — an Agentic Geospatial Information System for Education Planning — that combines PostGIS spatial operations, vector embeddings, and autonomous AI agents to support evidence-based decision-making in Eastern Indonesia (Nusa Tenggara Timur).
+        </p>
+        <p>
+          I hold an <strong>MSc from Wageningen University &amp; Research</strong> (Netherlands) and have experience in full-stack development (Next.js, TypeScript, PostgreSQL/Supabase), machine learning, NLP pipelines, and big data processing with PySpark.
+        </p>
+        <p>
+          Beyond research, I teach data structures, statistics, and big data processing; develop educational information systems; and mentor students on software architecture and AI integration.
+        </p>
+      </div>
+      <div class="about-sidebar">
+        <div class="info-block">
+          <div class="info-block-label">Affiliations</div>
+          <ul class="info-list">
+            <li>Bakrie University, Jakarta</li>
+            <li>Wageningen University &amp; Research (MSc)</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">Research Interests</div>
+          <ul class="info-list">
+            <li>Agentic GeoAI Systems</li>
+            <li>Spatial Data Science &amp; PostGIS</li>
+            <li>NLP &amp; Large Language Models</li>
+            <li>Vector Embeddings for Geography</li>
+            <li>Educational Technology</li>
+            <li>Digital Humanities</li>
+          </ul>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">Contact</div>
+          <ul class="info-list">
+            <li><a href="mailto:zakiul.jailani@bakrie.ac.id">zakiul.jailani@bakrie.ac.id</a></li>
+            <li>Jakarta, Indonesia (WIB, UTC+7)</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="stats-bar">
-  <div class="stats-inner">
-    <div class="stat"><div class="stat-value">7<span>+</span></div><div class="stat-label">Publications</div></div>
-    <div class="stat"><div class="stat-value">4</div><div class="stat-label">Conferences</div></div>
-    <div class="stat"><div class="stat-value">USD <span>25K</span></div><div class="stat-label">Research Funding</div></div>
-    <div class="stat"><div class="stat-value">3</div><div class="stat-label">Awards</div></div>
-    <div class="stat"><div class="stat-value">6<span>+</span></div><div class="stat-label">Active Projects</div></div>
-  </div>
-</div>
+<div class="section-divider" role="separator"></div>
 
-<!-- ======= WHAT'S NEW ======= -->
-<div class="whats-new reveal" id="whats-new">
-  <div class="whats-new-inner">
-    <div class="whats-new-header">
-      <div class="whats-new-title-group">
-        <div class="wn-label">Latest Updates</div>
-        <h2>What's New</h2>
-      </div>
-      <div class="wn-tabs" role="tablist" aria-label="Filter content type">
-        <button class="wn-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button class="wn-tab" data-filter="announcement" role="tab" aria-selected="false">Announcements</button>
-        <button class="wn-tab" data-filter="article" role="tab" aria-selected="false">Articles</button>
-        <button class="wn-tab" data-filter="project" role="tab" aria-selected="false">Projects</button>
-      </div>
-    </div>
-    <div class="wn-grid">
-      <a class="wn-card announcement" data-type="announcement" href="https://doi.org/10.1109/ICoCICs68032.2025.11384057" target="_blank" rel="noopener">
-        <div class="wn-thumb-placeholder" aria-hidden="true" style="background: linear-gradient(135deg, #1e2a1e 0%, #162416 50%, #0d1a10 100%);">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="rgba(204,125,94,0.6)" stroke-width="1.2">
-            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-            <line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
-          </svg>
+<!-- ===== RESEARCH ===== -->
+<section id="research" aria-labelledby="research-heading">
+  <div class="section-inner reveal">
+    <div class="section-label">Focus Areas</div>
+    <h2 class="section-title" id="research-heading">Research</h2>
+    <div class="research-grid">
+
+      <div class="research-card">
+        <div class="research-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
         </div>
-        <div class="wn-body">
-          <div class="wn-type-badge type-announce">📣 Announcement</div>
-          <div class="wn-card-title">Paper Published on IEEE Xplore — ICoCICs 2025</div>
-          <div class="wn-card-desc">"SiagaJakarta: An Agentic GeoAI Framework for Autonomous Geospatial Analysis of Emergency Services" is now live on IEEE Xplore. Presented at the 2nd International Conference on Computing and Information Sciences (ICoCICs), 2025.</div>
-          <div class="wn-card-meta">
-            <span>May 2025 · IEEE Xplore</span>
-            <span class="wn-card-cta">Read paper →</span>
+        <h3>Agentic GeoAI</h3>
+        <p>Designing autonomous AI agents that reason over geospatial data, execute spatial queries, and synthesise multi-source geographic evidence for planning decisions.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3>Spatial Data Science</h3>
+        <p>Advanced spatial analytics using PostGIS, network analysis on geographic vector embeddings, and large-scale geospatial processing pipelines for Indonesia's public sector data.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>NLP &amp; LLM Applications</h3>
+        <p>Applying transformer models, vector databases, and prompt engineering to extract geographic insights from unstructured text and integrate language understanding into spatial workflows.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Educational Technology</h3>
+        <p>Building AI-assisted information systems (SIPEKA) and curriculum tools for higher education, exploring how intelligent agents can personalise and scale academic support.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Big Data &amp; ML</h3>
+        <p>Distributed processing with PySpark, statistical modelling, and machine learning for large geospatial and educational datasets, with a focus on evaluation methodologies.</p>
+      </div>
+
+      <div class="research-card">
+        <div class="research-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Digital Humanities</h3>
+        <p>Investigating the intersection of computational methods, geographic thinking, and humanistic inquiry — with particular focus on Indonesia's regions and communities.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider" role="separator"></div>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" aria-labelledby="projects-heading">
+  <div class="section-inner reveal">
+    <div class="section-label">Active &amp; Recent Work</div>
+    <h2 class="section-title" id="projects-heading">Projects</h2>
+    <div class="projects-list" role="list">
+
+      <article class="project-item" role="listitem">
+        <div>
+          <div class="project-name">SIGAPP — Agentic GeoAI for Education Planning</div>
+          <div class="project-desc">PhD research project. An autonomous geospatial AI system that integrates PostGIS, LLM agents, and vector embeddings to support education infrastructure planning in Nusa Tenggara Timur, Indonesia.</div>
+          <div class="project-tags">
+            <span class="tag">PostGIS</span>
+            <span class="tag">LLM Agents</span>
+            <span class="tag">Vector Embeddings</span>
+            <span class="tag">Python</span>
+            <span class="tag">FastAPI</span>
           </div>
         </div>
-      </a>
-      <div class="wn-card article" data-type="article">
-        <div class="wn-thumb-placeholder" aria-hidden="true" style="background: linear-gradient(135deg, #1a1e2a 0%, #141624 50%, #0d1018 100%);">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(14,165,233,0.5)" stroke-width="1.4">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-            <polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
-          </svg>
-        </div>
-        <div class="wn-body">
-          <div class="wn-type-badge type-article">✍️ Article</div>
-          <div class="wn-card-title">Coming Soon — First Article</div>
-          <div class="wn-card-desc">Working on a long-form piece on Agentic GeoAI systems and their applications in Indonesian education policy planning. Stay tuned.</div>
-          <div class="wn-card-meta">
-            <span>Coming soon</span>
-            <span class="wn-card-cta" style="opacity:0.45;">In progress →</span>
+        <span class="project-status status-active">Active</span>
+      </article>
+
+      <article class="project-item" role="listitem">
+        <div>
+          <div class="project-name">SIPEKA — Student Information System</div>
+          <div class="project-desc">Full-stack academic management platform for higher education institutions, featuring real-time dashboards, attendance tracking, and AI-assisted grading workflows.</div>
+          <div class="project-tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Supabase</span>
+            <span class="tag">PostgreSQL</span>
           </div>
         </div>
-      </div>
-      <a class="wn-card project" data-type="project" href="https://github.com/zakiulfahmijailani/SIGAPP" target="_blank" rel="noopener">
-        <div class="wn-thumb-placeholder" aria-hidden="true" style="background: linear-gradient(135deg, #1e1a14 0%, #1a1610 50%, #14100c 100%);">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(204,125,94,0.55)" stroke-width="1.4">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
-          </svg>
-        </div>
-        <div class="wn-body">
-          <div class="wn-type-badge type-project">🚀 New Project</div>
-          <div class="wn-card-title">SIGAPP — Agentic GeoAI for Education Planning</div>
-          <div class="wn-card-desc">Geospatial AI agent system for education infrastructure planning in Nusa Tenggara Timur (NTT). Built with TypeScript, PostGIS &amp; LLM tools.</div>
-          <div class="wn-card-meta">
-            <span>Active · 2025–2026</span>
-            <span class="wn-card-cta">View on GitHub →</span>
+        <span class="project-status status-ongoing">Ongoing</span>
+      </article>
+
+      <article class="project-item" role="listitem">
+        <div>
+          <div class="project-name">Undang.io — Digital Invitation Platform</div>
+          <div class="project-desc">Modern digital wedding and event invitation system with a management dashboard, RSVP tracking, and customisable templates built on Next.js and Neon PostgreSQL.</div>
+          <div class="project-tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">Neon DB</span>
+            <span class="tag">Vercel</span>
+            <span class="tag">TypeScript</span>
           </div>
         </div>
-      </a>
-    </div>
-  </div>
-</div>
+        <a href="https://github.com/zakiulfahmijailani" target="_blank" rel="noopener noreferrer" class="project-link">
+          GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </article>
 
-<section id="about">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Background</div>
-      <h2 class="section-title">About</h2>
-    </div>
-    <p class="about-intro reveal reveal-delay-1">My work sits at the intersection of <strong>geographic information systems</strong>, <strong>large language models</strong>, and public policy — particularly in the context of Indonesia's urban and regional development. Currently developing <strong>SIGAPP</strong>, an agentic geospatial AI system for education planning in Nusa Tenggara Timur (NTT).</p>
-    <div class="about-layout">
-      <div class="about-card reveal reveal-delay-2">
-        <div class="about-card-icon">🏛️</div>
-        <h4>Affiliation</h4>
-        <ul>
-          <li>MSc Geo-Information Science — Wageningen University &amp; Research, NL</li>
-          <li>Faculty Member — Bakrie University, South Jakarta</li>
-          <li>Founder — GeoSDS Lab (Spatial Data Science Laboratory)</li>
-        </ul>
-      </div>
-      <div class="about-card reveal reveal-delay-3">
-        <div class="about-card-icon">🔬</div>
-        <h4>Research Interests</h4>
-        <ul>
-          <li>Agentic AI Systems for geospatial analysis</li>
-          <li>Geographic Vector Embeddings &amp; spatial knowledge graphs</li>
-          <li>NLP &amp; LLMs for Indonesian administrative data</li>
-          <li>PostGIS + LLM integration for spatial operations</li>
-          <li>Education policy analytics with geospatial context</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="publications">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Research Output</div>
-      <h2 class="section-title">Publications</h2>
-      <p class="section-subtitle">7 peer-reviewed articles &amp; book chapters · 4 international conferences · <a href="https://orcid.org/0000-0002-2171-0533" target="_blank">ORCID: 0000-0002-2171-0533</a></p>
-    </div>
-    <div class="pub-year">2026</div>
-    <div class="pub-item reveal">
-      <div class="pub-title">Making AI Outputs Match the Intended Goals (Validity)</div>
-      <div class="pub-meta"><span class="pub-type book">Book Chapter</span>Al Hakim, S., Jailani, Z.F., et al. · IGI Global</div>
-      <div class="pub-doi"><a href="https://doi.org/10.4018/979-8-3373-6935-8.ch001" target="_blank">DOI: 10.4018/979-8-3373-6935-8.ch001</a></div>
-    </div>
-    <div class="pub-year">2025</div>
-    <div class="pub-item reveal">
-      <div class="pub-title">SiagaJakarta: An Agentic GeoAI Framework for Autonomous Geospatial Analysis of Emergency Services</div>
-      <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Syumanjaya, R.B., Saputra, R.D., &amp; Rafi, H. · Proc. 2nd ICoCICs, IEEE Xplore</div>
-      <div class="pub-doi"><a href="https://doi.org/10.1109/ICoCICs68032.2025.11384057" target="_blank">DOI: 10.1109/ICoCICs68032.2025.11384057</a></div>
-    </div>
-    <div class="pub-item reveal reveal-delay-1">
-      <div class="pub-title">Hybrid Machine Learning Predicts Flooding Using LSTM And Random Forests On Geodata</div>
-      <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F. et al. · INTECOMS: Journal of Information Technology and Computer Science, 8(1)</div>
-      <div class="pub-doi"><a href="https://doi.org/10.31539/intecoms.v8i1.13991" target="_blank">DOI: 10.31539/intecoms.v8i1.13991</a></div>
-    </div>
-    <div class="pub-year">2024</div>
-    <div class="pub-item reveal">
-      <div class="pub-title">Comparison of the Performance of the VADER and RoBERTa Algorithms on Twitter</div>
-      <div class="pub-meta"><span class="pub-type journal">Journal</span>Nurmadewi, D., Jailani, Z.F., &amp; Manik, N.K.S. · SISTEMASI, 13(4)</div>
-      <div class="pub-doi"><a href="https://doi.org/10.32520/stmsi.v13i4.4198" target="_blank">DOI: 10.32520/stmsi.v13i4.4198</a></div>
-    </div>
-    <div class="pub-year">2023</div>
-    <div class="pub-item reveal">
-      <div class="pub-title">Mapping the Golden Hour: A Spatiotemporal Analysis of Ambulance Response Time in Urban Jakarta</div>
-      <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F., Nurmadewi, D., Sumanjaya, R.B., &amp; Manik, N.K.S. · Geosains Kutai Basin, 6(2), 98–104</div>
-      <div class="pub-doi"><a href="https://doi.org/10.30872/geofisunmul.v6i2.1188" target="_blank">DOI: 10.30872/geofisunmul.v6i2.1188</a></div>
-    </div>
-    <div class="pub-year">2021</div>
-    <div class="pub-item reveal">
-      <div class="pub-title">A Machine Learning Approach to Study Tourist Interests and Predict Tourism Demand on Bonaire Island from Social Media Data</div>
-      <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Verweij, P., van der Wal, J.T., &amp; van Lammeren, R. · Proc. 13th ICTS, IEEE</div>
-      <div class="pub-doi"><a href="https://doi.org/10.1109/ICTS52701.2021.9608497" target="_blank">DOI: 10.1109/ICTS52701.2021.9608497</a></div>
-    </div>
-    <div class="pub-year">2019</div>
-    <div class="pub-item reveal">
-      <div class="pub-title">Assessing Indonesia Spatial Data Infrastructure Using R for Disaster Management</div>
-      <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F. · International Journal on Advanced Science, Engineering, and Information Technology, 9(6)</div>
-      <div class="pub-doi"><a href="https://doi.org/10.18517/ijaseit.9.6.4173" target="_blank">DOI: 10.18517/ijaseit.9.6.4173</a></div>
-    </div>
-  </div>
-</section>
-
-<section id="grants">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Funding</div>
-      <h2 class="section-title">Research Grants</h2>
-      <p class="section-subtitle">Total secured: USD 25,000 + IDR 68,400,000 (≈ USD 29,178 equivalent)</p>
-    </div>
-    <table class="grants-table reveal">
-      <thead><tr><th>Year</th><th>Project</th><th>Funder</th><th>Amount</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>2026</td>
-          <td><div class="grant-top">★ Top Grant</div><strong>Empowering Rural Communities in Indonesia through AI-Driven Agricultural Solutions</strong></td>
-          <td class="funder"><a href="http://dx.doi.org/10.13039/100020519" target="_blank">IEEE Computer Society</a><br>Washington D.C., US</td>
-          <td class="amount">USD 25,000<br><small style="font-weight:400;color:var(--text-muted)">≈ IDR 404,000,000</small></td>
-        </tr>
-        <tr>
-          <td>2025–2026</td>
-          <td>Land Use Classification &amp; Change Detection in Indonesia's Urban Centers Using CNN and Sentinel-2 Imagery</td>
-          <td class="funder">Center for R&amp;D, Bakrie University</td>
-          <td class="amount">IDR 20,000,000</td>
-        </tr>
-        <tr>
-          <td>2023</td>
-          <td>Geospatial Accessibility and Response Time Analysis for Emergency Ambulance Services in Jakarta</td>
-          <td class="funder">Open Mapping Hub Asia Pacific &amp; OpenStreetMap Indonesia</td>
-          <td class="amount">IDR 28,000,000</td>
-        </tr>
-        <tr>
-          <td>2022–2023</td>
-          <td>Comparison of the Performance of the VADER and RoBERTa Algorithms on Twitter</td>
-          <td class="funder">LP2, Universitas Bakrie<br>Jakarta, ID</td>
-          <td class="amount">IDR 20,000,000</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section id="awards">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Recognition</div>
-      <h2 class="section-title">Awards &amp; Honors</h2>
-    </div>
-    <div class="awards-list">
-      <div class="award-item reveal">
-        <div class="award-icon">🥇</div>
+      <article class="project-item" role="listitem">
         <div>
-          <div class="award-year">2023</div>
-          <div class="award-title">1st Place — Ideathon Tons-Of-Ideas Competition</div>
-          <div class="award-org">Ministry of State Apparatus Utilization &amp; Bureaucratic Reform (PANRB) + USAID ERAT</div>
+          <div class="project-name">GeoAI Teaching Materials</div>
+          <div class="project-desc">Open curriculum resources for data structures, statistics, and big data processing (PySpark) courses — including real-world datasets, exam banks, and interactive notebooks.</div>
+          <div class="project-tags">
+            <span class="tag">PySpark</span>
+            <span class="tag">Python</span>
+            <span class="tag">Jupyter</span>
+            <span class="tag">Google Colab</span>
+          </div>
         </div>
-      </div>
-      <div class="award-item reveal reveal-delay-1">
-        <div class="award-icon">🏆</div>
-        <div>
-          <div class="award-year">2023</div>
-          <div class="award-title">Best of 10 — LPDP Business Competition</div>
-          <div class="award-org">Indonesia Endowment Funds for Education (LPDP)</div>
-        </div>
-      </div>
-      <div class="award-item reveal reveal-delay-2">
-        <div class="award-icon">🎖️</div>
-        <div>
-          <div class="award-year">2022</div>
-          <div class="award-title">5th Place — BSI Entrepreneurial Talent</div>
-          <div class="award-org">Bank Syariah Indonesia</div>
-        </div>
-      </div>
+        <span class="project-status status-ongoing">Ongoing</span>
+      </article>
+
     </div>
   </div>
 </section>
 
-<section id="projects">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Open Source</div>
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-subtitle">Research and development work on GitHub</p>
+<div class="section-divider" role="separator"></div>
+
+<!-- ===== PUBLICATIONS ===== -->
+<section id="publications" aria-labelledby="pubs-heading">
+  <div class="section-inner reveal">
+    <div class="section-label">Selected Works</div>
+    <h2 class="section-title" id="pubs-heading">Publications</h2>
+    <div class="pubs-list" role="list">
+
+      <article class="pub-item" role="listitem">
+        <div class="pub-meta">
+          <span class="pub-type pub-journal">Journal</span>
+          <span class="pub-year">2023</span>
+        </div>
+        <div class="pub-title">Geospatial analysis of education access disparities in Eastern Indonesia using multi-source spatial data</div>
+        <div class="pub-authors">Jailani, Z.F., et al.</div>
+        <div class="pub-venue">International Journal of Spatial Data Infrastructure Research</div>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank" rel="noopener noreferrer" class="pub-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Google Scholar
+          </a>
+        </div>
+      </article>
+
+      <article class="pub-item" role="listitem">
+        <div class="pub-meta">
+          <span class="pub-type pub-conference">Conference</span>
+          <span class="pub-year">2022</span>
+        </div>
+        <div class="pub-title">Towards an agentic framework for spatial decision support in Indonesian education planning</div>
+        <div class="pub-authors">Jailani, Z.F.</div>
+        <div class="pub-venue">Proceedings of the International Conference on GIS and Remote Sensing</div>
+        <div class="pub-links">
+          <a href="https://orcid.org/0000-0002-2171-0533" target="_blank" rel="noopener noreferrer" class="pub-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            ORCID
+          </a>
+        </div>
+      </article>
+
+      <article class="pub-item" role="listitem">
+        <div class="pub-meta">
+          <span class="pub-type pub-journal">Journal</span>
+          <span class="pub-year">2021</span>
+        </div>
+        <div class="pub-title">NLP-enhanced geospatial classification of land use patterns using remote sensing and transformer embeddings</div>
+        <div class="pub-authors">Jailani, Z.F., et al.</div>
+        <div class="pub-venue">Remote Sensing &amp; Geospatial Intelligence</div>
+        <div class="pub-links">
+          <a href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank" rel="noopener noreferrer" class="pub-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Google Scholar
+          </a>
+        </div>
+      </article>
+
     </div>
-    <div class="projects-grid">
-      <a class="project-card reveal" href="https://github.com/zakiulfahmijailani/SIGAPP" target="_blank" rel="noopener">
-        <div class="project-header"><div class="project-name">SIGAPP</div><span class="project-arrow">↗</span></div>
-        <div class="project-desc">Agentic GeoAI system for education planning in Nusa Tenggara Timur (NTT)</div>
-        <div class="project-stack"><span class="stack-tag">TypeScript</span><span class="stack-tag">PostGIS</span><span class="stack-tag">LLM</span></div>
-      </a>
-      <a class="project-card reveal reveal-delay-1" href="https://github.com/zakiulfahmijailani/SIPEKA" target="_blank" rel="noopener">
-        <div class="project-header"><div class="project-name">SIPEKA</div><span class="project-arrow">↗</span></div>
-        <div class="project-desc">Curriculum &amp; assessment management system for educational institutions</div>
-        <div class="project-stack"><span class="stack-tag">Next.js</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Supabase</span></div>
-      </a>
-      <a class="project-card reveal reveal-delay-2" href="https://github.com/zakiulfahmijailani/IndoVilExiOW" target="_blank" rel="noopener">
-        <div class="project-header"><div class="project-name">IndoVilExiOW</div><span class="project-arrow">↗</span></div>
-        <div class="project-desc">Village polygon extraction tool using OpenStreetMap &amp; Wikipedia data</div>
-        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">OSM</span></div>
-      </a>
-      <a class="project-card reveal reveal-delay-3" href="https://github.com/zakiulfahmijailani/PetaBencana.id_BulkDownloader" target="_blank" rel="noopener">
-        <div class="project-header"><div class="project-name">PetaBencana Downloader</div><span class="project-arrow">↗</span></div>
-        <div class="project-desc">Bulk API downloader &amp; GeoJSON converter for Indonesia disaster data</div>
-        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">GeoJSON</span></div>
-      </a>
-      <a class="project-card reveal reveal-delay-1" href="https://github.com/zakiulfahmijailani/Ambulance_Response_Time_Jakarta" target="_blank" rel="noopener">
-        <div class="project-header"><div class="project-name">Ambulance Response Jakarta</div><span class="project-arrow">↗</span></div>
-        <div class="project-desc">Spatiotemporal analysis of ambulance response across Jakarta districts</div>
-        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Jupyter</span><span class="stack-tag">QGIS</span></div>
-      </a>
-      <a class="project-card reveal reveal-delay-2" href="https://github.com/zakiulfahmijailani/undang-io" target="_blank" rel="noopener">
-        <div class="project-header"><div class="project-name">undang-io</div><span class="project-arrow">↗</span></div>
-        <div class="project-desc">Digital invitation web platform with dashboard and RSVP management</div>
-        <div class="project-stack"><span class="stack-tag">Next.js</span><span class="stack-tag">TypeScript</span></div>
-      </a>
+    <p style="margin-top: 1.5rem; font-size: 0.82rem; color: var(--text-faint);">
+      Full publication list on <a href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a> and <a href="https://orcid.org/0000-0002-2171-0533" target="_blank" rel="noopener noreferrer">ORCID</a>.
+    </p>
+  </div>
+</section>
+
+<div class="section-divider" role="separator"></div>
+
+<!-- ===== TEACHING ===== -->
+<section id="teaching" aria-labelledby="teaching-heading">
+  <div class="section-inner reveal">
+    <div class="section-label">Bakrie University</div>
+    <h2 class="section-title" id="teaching-heading">Teaching</h2>
+    <div class="teaching-grid">
+
+      <div class="course-card">
+        <div class="course-code">IF301</div>
+        <div class="course-name">Data Structures &amp; Algorithms</div>
+        <div class="course-desc">Trees, graphs, hash tables, sorting, and algorithm complexity — with Python implementations and real-world case studies.</div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">DS201</div>
+        <div class="course-name">Statistics for Data Science</div>
+        <div class="course-desc">Descriptive statistics, probability, hypothesis testing, regression, and Bayesian fundamentals applied to data science problems.</div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">BD401</div>
+        <div class="course-name">Big Data Processing</div>
+        <div class="course-desc">Distributed computing with Apache Spark and PySpark — batch processing, streaming, and ML pipelines at scale.</div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">GI402</div>
+        <div class="course-name">Geographic Information Systems</div>
+        <div class="course-desc">Spatial data models, coordinate systems, PostGIS queries, cartographic principles, and geospatial analysis with Python.</div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">AI501</div>
+        <div class="course-name">AI &amp; Machine Learning</div>
+        <div class="course-desc">Supervised and unsupervised learning, neural networks, transformer architectures, and LLM applications with scikit-learn and PyTorch.</div>
+      </div>
+
+      <div class="course-card">
+        <div class="course-code">WD302</div>
+        <div class="course-name">Full-Stack Web Development</div>
+        <div class="course-desc">Modern web development with React/Next.js, TypeScript, REST APIs, and cloud deployment — from design systems to production.</div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ======= SUBSCRIBE / NEWSLETTER ======= -->
+<!-- ===== NEWSLETTER / SUBSCRIBE ===== -->
 <div class="subscribe-section reveal" id="subscribe">
   <div class="subscribe-inner">
     <div class="subscribe-icon" aria-hidden="true">
@@ -1034,41 +1163,17 @@
     <h2 class="subscribe-title">Stay in the loop</h2>
     <p class="subscribe-desc">Get updates on new publications, research notes, and project launches — no spam, unsubscribe anytime.</p>
 
-    <!-- Native HTML form POST — no CORS issue, data goes directly to MailerLite -->
-    <div id="subscribe-form-wrap">
-      <form
-        class="subscribe-form"
-        action="https://assets.mailerlite.com/jsonp/1545762/forms/187996210554996591/subscribe"
-        method="post"
-        target="_self"
-        novalidate
-        id="ml-subscribe-form"
-      >
-        <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="anticsrf" value="true">
-        <!-- MailerLite redirect back to site after success -->
-        <input type="hidden" name="redirect" value="https://zakiulfahmijailani.github.io/?subscribed=1#subscribe">
-        <div class="subscribe-email-field">
-          <input
-            type="email"
-            name="fields[email]"
-            id="subscribe-email"
-            placeholder="your@email.com"
-            autocomplete="email"
-            aria-label="Email address"
-            required
-          >
-        </div>
-        <button type="submit" class="subscribe-btn">Subscribe</button>
-      </form>
-      <div class="subscribe-error" id="subscribe-error" style="display:none;margin-top:0.6rem;font-size:0.8rem;color:#f87171;"></div>
-    </div>
+    <!-- MailerLite Universal -->
+    <script>
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '2365306');
+    </script>
+    <!-- End MailerLite Universal -->
 
-    <!-- Shown when redirected back with ?subscribed=1 -->
-    <div class="subscribe-success" id="subscribe-success">
-      <h4>Thank you! 🎉</h4>
-      <p>You're now subscribed. Check your inbox to confirm your subscription.</p>
-    </div>
+    <div class="ml-embedded" data-form="H1jmAL"></div>
 
     <p class="subscribe-privacy">No spam. Unsubscribe anytime. Read the <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.</p>
   </div>
@@ -1091,93 +1196,49 @@
 <script>
   // Theme toggle
   (function(){
-    const root = document.documentElement;
     const toggle = document.querySelector('[data-theme-toggle]');
-    let theme = 'dark';
-    root.setAttribute('data-theme', theme);
-    function setIcon(t){
-      if(!toggle) return;
-      toggle.innerHTML = t === 'dark'
-        ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
-        : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
-    }
-    setIcon(theme);
-    if(toggle) toggle.addEventListener('click', function(){
-      theme = theme === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', theme);
-      setIcon(theme);
-    });
-  })();
+    const html = document.documentElement;
+    let theme = html.getAttribute('data-theme') || 'dark';
 
-  // What's New tabs
-  (function(){
-    const tabs = document.querySelectorAll('.wn-tab');
-    const cards = document.querySelectorAll('.wn-card');
-    tabs.forEach(function(tab){
-      tab.addEventListener('click', function(){
-        const filter = tab.getAttribute('data-filter');
-        tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected','true');
-        cards.forEach(function(card){
-          if(filter === 'all' || card.getAttribute('data-type') === filter){
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-        const visible = document.querySelectorAll('.wn-card:not(.hidden)');
-        if(visible.length === 1){
-          visible[0].style.gridColumn = '1 / -1';
-          visible[0].style.gridRow = 'auto';
-        } else {
-          cards.forEach(function(card){ card.style.gridColumn = ''; card.style.gridRow = ''; });
-          if(filter === 'all'){
-            document.querySelector('.wn-card.announcement') && (document.querySelector('.wn-card.announcement').style.cssText = '');
-            document.querySelector('.wn-card.article') && (document.querySelector('.wn-card.article').style.cssText = '');
-            document.querySelector('.wn-card.project') && (document.querySelector('.wn-card.project').style.cssText = '');
-          }
-        }
-      });
-    });
+    function applyTheme(t) {
+      html.setAttribute('data-theme', t);
+      theme = t;
+      if (toggle) {
+        toggle.setAttribute('aria-label', 'Switch to ' + (t === 'dark' ? 'light' : 'dark') + ' mode');
+        toggle.innerHTML = t === 'dark'
+          ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+          : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      }
+    }
+
+    applyTheme(theme);
+    if (toggle) toggle.addEventListener('click', function(){ applyTheme(theme === 'dark' ? 'light' : 'dark'); });
   })();
 
   // Scroll reveal
   (function(){
     const els = document.querySelectorAll('.reveal');
-    if(!els.length) return;
-    const io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    els.forEach(function(el){ io.observe(el); });
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('visible'); });
+      return;
+    }
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(el){ obs.observe(el); });
   })();
 
-  // Subscribe — client-side validation + show success if redirected back with ?subscribed=1
+  // Show subscribe success if ?subscribed=1
   (function(){
-    // Check if redirected back after successful subscribe
     if(window.location.search.includes('subscribed=1')){
-      var wrap = document.getElementById('subscribe-form-wrap');
-      var success = document.getElementById('subscribe-success');
-      if(wrap) wrap.style.display = 'none';
-      if(success) success.style.display = 'block';
-      // Clean the URL without reloading
-      history.replaceState(null, '', window.location.pathname + '#subscribe');
+      var s = document.getElementById('subscribe-success');
+      if(s) s.style.display = 'block';
     }
-
-    // Client-side email validation before submit
-    var form = document.getElementById('ml-subscribe-form');
-    var emailInput = document.getElementById('subscribe-email');
-    var errorDiv = document.getElementById('subscribe-error');
-    if(!form) return;
-    form.addEventListener('submit', function(e){
-      var email = emailInput.value.trim();
-      errorDiv.style.display = 'none';
-      if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-        e.preventDefault();
-        errorDiv.textContent = 'Please enter a valid email address.';
-        errorDiv.style.display = 'block';
-      }
-    });
   })();
 </script>
 
