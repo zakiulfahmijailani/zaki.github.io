@@ -1,91 +1,386 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Zaki Fahmi Jailani - Publications</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: "Segoe UI", sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-        }
-        header {
-            background: #004466;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .profile {
-            display: flex;
-            align-items: center;
-            padding: 20px;
-            background: white;
-        }
-        .profile img {
-            border-radius: 50%;
-            width: 120px;
-            margin-right: 20px;
-        }
-        .info {
-            font-size: 16px;
-        }
-        .info a {
-            color: #004466;
-            text-decoration: none;
-        }
-        .content {
-            padding: 20px;
-        }
-        .publication {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: white;
-            border-left: 5px solid #004466;
-        }
-        .publication h3 {
-            margin: 0 0 10px;
-        }
-        .publication p {
-            margin: 5px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zakiul Fahmi Jailani, MSc — Researcher & Lecturer</title>
+  <meta name="description" content="Personal academic website of Zakiul Fahmi Jailani, MSc. Researcher in Agentic GeoAI, NLP, and Educational Technology. Bakrie University, Jakarta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0a2540;
+      --navy-light: #0e3460;
+      --teal: #0d7a8a;
+      --teal-light: #14a3b8;
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #1a1f2e;
+      --text-muted: #5a6478;
+      --text-faint: #9aa0b0;
+      --border: rgba(10,37,64,0.10);
+      --radius: 10px;
+      --shadow: 0 2px 12px rgba(10,37,64,0.08);
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-display: 'Instrument Serif', Georgia, serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); font-size: 16px; color: var(--text); background: var(--bg); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: var(--teal); text-decoration: none; transition: color 0.18s; }
+    a:hover { color: var(--teal-light); }
+    img { display: block; max-width: 100%; }
+    p { max-width: 70ch; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,37,64,0.97);
+      backdrop-filter: blur(8px);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-brand { font-family: var(--font-display); font-size: 1.1rem; color: #fff; letter-spacing: 0.01em; }
+    .nav-links { display: flex; gap: 1.75rem; }
+    .nav-links a { color: rgba(255,255,255,0.75); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; }
+    .nav-links a:hover { color: #fff; }
+
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #0d5a6e 100%);
+      color: #fff;
+      padding: 5rem 2rem 4rem;
+    }
+    .hero-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center; }
+    .hero-name { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.15; margin-bottom: 0.5rem; }
+    .hero-title { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 1.25rem; letter-spacing: 0.03em; text-transform: uppercase; font-weight: 500; }
+    .hero-desc { font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 52ch; margin-bottom: 1.75rem; line-height: 1.7; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9); border-radius: 99px;
+      padding: 0.3rem 0.85rem; font-size: 0.8rem; font-weight: 500;
+      transition: background 0.18s;
+    }
+    .hero-badge:hover { background: rgba(255,255,255,0.2); color: #fff; }
+    .hero-avatar {
+      width: 140px; height: 140px; border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 3rem; color: rgba(255,255,255,0.7);
+      flex-shrink: 0;
+    }
+
+    .stats-bar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+    }
+    .stats-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.1rem; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 3.5rem 2rem; }
+    section:nth-child(even) { background: var(--surface); }
+    .section-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: var(--navy); margin-bottom: 0.35rem; }
+    .section-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 2rem; }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .about-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
+    .about-card h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.6rem; }
+    .about-card p, .about-card li { font-size: 0.9rem; color: var(--text); }
+    .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+    .about-card li::before { content: '→ '; color: var(--teal); }
+
+    .pub-year { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin: 1.75rem 0 0.75rem; }
+    .pub-year:first-child { margin-top: 0; }
+    .pub-item { border-left: 2px solid var(--border); padding: 0.85rem 0 0.85rem 1.25rem; margin-bottom: 0.25rem; transition: border-color 0.18s; }
+    .pub-item:hover { border-left-color: var(--teal); }
+    .pub-title { font-weight: 600; color: var(--text); font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .pub-meta { font-size: 0.825rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+    .pub-type { display: inline-block; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.15rem 0.5rem; border-radius: 4px; margin-right: 0.4rem; }
+    .pub-type.journal { background: #e8f4f8; color: #0a6080; }
+    .pub-type.conference { background: #f0e8f8; color: #5a2090; }
+    .pub-type.book { background: #e8f8ee; color: #1a6e3a; }
+    .pub-doi { font-size: 0.8rem; }
+
+    .grants-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .grants-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); border-bottom: 2px solid var(--border); padding: 0.5rem 0.75rem; }
+    .grants-table td { padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .grants-table tr:last-child td { border-bottom: none; }
+    .grants-table tr:hover td { background: var(--bg); }
+    .amount { font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .funder { color: var(--text-muted); font-size: 0.8rem; }
+
+    .awards-list { display: flex; flex-direction: column; gap: 1rem; }
+    .award-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
+    .award-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .award-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .award-org { font-size: 0.825rem; color: var(--text-muted); }
+    .award-year { font-size: 0.75rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; transition: box-shadow 0.18s, border-color 0.18s; display: block; }
+    .project-card:hover { box-shadow: var(--shadow); border-color: rgba(13,122,138,0.3); }
+    .project-name { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.35rem; }
+    .project-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .stack-tag { font-size: 0.7rem; font-weight: 600; background: rgba(13,122,138,0.08); color: var(--teal); border-radius: 4px; padding: 0.15rem 0.45rem; }
+
+    footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; padding: 2rem; font-size: 0.825rem; }
+    footer a { color: rgba(255,255,255,0.8); }
+
+    @media (max-width: 640px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-avatar { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .stats-inner { gap: 1.5rem; }
+      section { padding: 2.5rem 1.25rem; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <h1>Zaki Fahmi Jailani</h1>
-    <p>Lecturer & Researcher</p>
-</header>
+<nav>
+  <span class="nav-brand">Zakiul Fahmi Jailani</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#publications">Publications</a>
+    <a href="#grants">Grants</a>
+    <a href="#awards">Awards</a>
+    <a href="#projects">Projects</a>
+  </div>
+</nav>
 
-<section class="profile">
-    <img src="https://via.placeholder.com/120" alt="Foto Profil">
-    <div class="info">
-        <p><strong>Location:</strong> Jakarta, Indonesia</p>
-        <p><a href="#">Google Scholar</a> | <a href="#">ORCID</a> | <a href="#">Scopus</a> | <a href="#">LinkedIn</a></p>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-title">Lecturer · Researcher · Developer</div>
+      <h1 class="hero-name">Zakiul Fahmi Jailani, MSc</h1>
+      <p class="hero-desc">Researcher in Agentic GeoAI, spatial data science, and educational technology. Faculty at Bakrie University, Jakarta. Developing AI systems for education planning in Eastern Indonesia.</p>
+      <div class="hero-badges">
+        <a class="hero-badge" href="mailto:zakiul.jailani@bakrie.ac.id">✉ zakiul.jailani@bakrie.ac.id</a>
+        <a class="hero-badge" href="https://orcid.org/0000-0002-2171-0533" target="_blank" rel="noopener">🟢 ORCID</a>
+        <a class="hero-badge" href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank" rel="noopener">🎓 Google Scholar</a>
+        <a class="hero-badge" href="https://github.com/zakiulfahmijailani" target="_blank" rel="noopener">🐙 GitHub</a>
+        <a class="hero-badge" href="https://www.linkedin.com/in/zakiulfahmi/" target="_blank" rel="noopener">💼 LinkedIn</a>
+      </div>
     </div>
+    <div class="hero-avatar">ZJ</div>
+  </div>
 </section>
 
-<section class="content">
-    <h2>📚 Publications</h2>
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-value">7</div><div class="stat-label">Publications</div></div>
+    <div class="stat"><div class="stat-value">4</div><div class="stat-label">Conferences</div></div>
+    <div class="stat"><div class="stat-value">USD 25K+</div><div class="stat-label">Research Funding</div></div>
+    <div class="stat"><div class="stat-value">3</div><div class="stat-label">Awards</div></div>
+    <div class="stat"><div class="stat-value">6+</div><div class="stat-label">Active Projects</div></div>
+  </div>
+</div>
 
-    <div class="publication">
-        <h3>Penerapan Word2Vec dan SVM dengan Hyperparameter Tuning untuk Deteksi Phishing</h3>
-        <p><em>Jurnal Riset Komputer (JURIKOM), 2025 – SINTA 3</em></p>
-        <p><strong>Authors:</strong> Z. F. Jailani & K. Huda</p>
-        <p><strong>Citation:</strong> Jailani, Z. F., & Huda, K. (2025). Jurnal Riset Komputer, 12(3), 361–371. https://doi.org/10.30865/jurikom.v12i3.8729</p>
-        <p><a href="#">Download Paper</a></p>
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About</h2>
+    <p class="section-subtitle">Background, affiliation & research focus</p>
+    <p style="margin-bottom:1.5rem; color: var(--text-muted); font-size:0.95rem; max-width:65ch;">My work sits at the intersection of geographic information systems, large language models, and public policy — particularly in the context of Indonesia's urban and regional development. Currently developing <strong>SIGAPP</strong>, an agentic geospatial AI system for education planning in Nusa Tenggara Timur (NTT).</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <h4>Affiliation</h4>
+        <ul>
+          <li>MSc Geo-Information Science — Wageningen University & Research, NL</li>
+          <li>Faculty Member — Bakrie University, South Jakarta</li>
+          <li>Founder — GeoSDS Lab (Spatial Data Science Laboratory)</li>
+        </ul>
+      </div>
+      <div class="about-card">
+        <h4>Research Interests</h4>
+        <ul>
+          <li>Agentic AI Systems for geospatial analysis</li>
+          <li>Geographic Vector Embeddings & spatial knowledge graphs</li>
+          <li>NLP & LLMs for Indonesian administrative data</li>
+          <li>PostGIS + LLM integration for spatial operations</li>
+          <li>Education policy analytics with geospatial context</li>
+        </ul>
+      </div>
     </div>
-
-    <div class="publication">
-        <h3>Determining community happiness index with transformers and attention-based deep learning</h3>
-        <p><em>Under Review, 2025</em></p>
-        <p><strong>Authors:</strong> Z. F. Jailani et al.</p>
-        <p><a href="#">Download Paper</a></p>
-    </div>
+  </div>
 </section>
+
+<section id="publications">
+  <div class="container">
+    <h2 class="section-title">Publications</h2>
+    <p class="section-subtitle">7 peer-reviewed articles & book chapters · 4 international conferences · <a href="https://orcid.org/0000-0002-2171-0533" target="_blank">ORCID: 0000-0002-2171-0533</a></p>
+
+    <div class="pub-year">2026</div>
+    <div class="pub-item">
+      <div class="pub-title">Making AI Outputs Match the Intended Goals (Validity)</div>
+      <div class="pub-meta"><span class="pub-type book">Book Chapter</span>Al Hakim, S., Jailani, Z.F., et al. · IGI Global</div>
+      <div class="pub-doi"><a href="https://doi.org/10.4018/979-8-3373-6935-8.ch001" target="_blank">DOI: 10.4018/979-8-3373-6935-8.ch001</a></div>
+    </div>
+
+    <div class="pub-year">2025</div>
+    <div class="pub-item">
+      <div class="pub-title">SiagaJakarta: An Agentic GeoAI Framework for Autonomous Geospatial Analysis of Emergency Services</div>
+      <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Syumanjaya, R.B., Saputra, R.D., & Rafi, H. · Proc. 2nd ICoCICs, IEEE Xplore</div>
+      <div class="pub-doi"><a href="https://doi.org/10.1109/ICoCICs68032.2025.11384057" target="_blank">DOI: 10.1109/ICoCICs68032.2025.11384057</a></div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-title">Hybrid Machine Learning Predicts Flooding Using LSTM And Random Forests On Geodata</div>
+      <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F. et al. · INTECOMS: Journal of Information Technology and Computer Science, 8(1)</div>
+      <div class="pub-doi"><a href="https://doi.org/10.31539/intecoms.v8i1.13991" target="_blank">DOI: 10.31539/intecoms.v8i1.13991</a></div>
+    </div>
+
+    <div class="pub-year">2024</div>
+    <div class="pub-item">
+      <div class="pub-title">Comparison of the Performance of the VADER and RoBERTa Algorithms on Twitter</div>
+      <div class="pub-meta"><span class="pub-type journal">Journal</span>Nurmadewi, D., Jailani, Z.F., & Manik, N.K.S. · SISTEMASI, 13(4)</div>
+      <div class="pub-doi"><a href="https://doi.org/10.32520/stmsi.v13i4.4198" target="_blank">DOI: 10.32520/stmsi.v13i4.4198</a></div>
+    </div>
+
+    <div class="pub-year">2023</div>
+    <div class="pub-item">
+      <div class="pub-title">Mapping the Golden Hour: A Spatiotemporal Analysis of Ambulance Response Time in Urban Jakarta</div>
+      <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F., Nurmadewi, D., Sumanjaya, R.B., & Manik, N.K.S. · Geosains Kutai Basin, 6(2), 98–104</div>
+      <div class="pub-doi"><a href="https://doi.org/10.30872/geofisunmul.v6i2.1188" target="_blank">DOI: 10.30872/geofisunmul.v6i2.1188</a></div>
+    </div>
+
+    <div class="pub-year">2021</div>
+    <div class="pub-item">
+      <div class="pub-title">A Machine Learning Approach to Study Tourist Interests and Predict Tourism Demand on Bonaire Island from Social Media Data</div>
+      <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Verweij, P., van der Wal, J.T., & van Lammeren, R. · Proc. 13th ICTS, IEEE</div>
+      <div class="pub-doi"><a href="https://doi.org/10.1109/ICTS52701.2021.9608497" target="_blank">DOI: 10.1109/ICTS52701.2021.9608497</a></div>
+    </div>
+
+    <div class="pub-year">2019</div>
+    <div class="pub-item">
+      <div class="pub-title">Assessing Indonesia Spatial Data Infrastructure Using R for Disaster Management</div>
+      <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F. · International Journal on Advanced Science, Engineering, and Information Technology, 9(6)</div>
+      <div class="pub-doi"><a href="https://doi.org/10.18517/ijaseit.9.6.4173" target="_blank">DOI: 10.18517/ijaseit.9.6.4173</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="grants">
+  <div class="container">
+    <h2 class="section-title">Research Grants</h2>
+    <p class="section-subtitle">Total secured funding: USD 25,000 + IDR 68,400,000 (~USD 29,178 equivalent)</p>
+    <table class="grants-table">
+      <thead>
+        <tr><th>Year</th><th>Project</th><th>Funder</th><th>Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026</td>
+          <td><strong>Empowering Rural Communities in Indonesia through AI-Driven Agricultural Solutions</strong></td>
+          <td class="funder"><a href="http://dx.doi.org/10.13039/100020519" target="_blank">IEEE Computer Society</a><br>Washington D.C., US</td>
+          <td class="amount">USD 25,000<br><small style="font-weight:400;color:var(--text-muted)">≈ IDR 404,000,000</small></td>
+        </tr>
+        <tr>
+          <td>2025–2026</td>
+          <td>Land Use Classification & Change Detection in Indonesia's Urban Centers Using CNN and Sentinel-2 Imagery</td>
+          <td class="funder">Center for R&D, Bakrie University</td>
+          <td class="amount">IDR 20,000,000</td>
+        </tr>
+        <tr>
+          <td>2023</td>
+          <td>Geospatial Accessibility and Response Time Analysis for Emergency Ambulance Services in Jakarta</td>
+          <td class="funder">Open Mapping Hub Asia Pacific & OpenStreetMap Indonesia</td>
+          <td class="amount">IDR 28,000,000</td>
+        </tr>
+        <tr>
+          <td>2022–2023</td>
+          <td>Comparison of the Performance of the VADER and RoBERTa Algorithms on Twitter</td>
+          <td class="funder">LP2, Universitas Bakrie<br>Jakarta, ID</td>
+          <td class="amount">IDR 20,000,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="container">
+    <h2 class="section-title">Awards & Honors</h2>
+    <p class="section-subtitle">Recognition in research and entrepreneurship</p>
+    <div class="awards-list">
+      <div class="award-item">
+        <div class="award-icon">🥇</div>
+        <div>
+          <div class="award-year">2023</div>
+          <div class="award-title">1st Place — Ideathon Tons-Of-Ideas Competition</div>
+          <div class="award-org">Ministry of State Apparatus Utilization & Bureaucratic Reform (PANRB) + USAID ERAT</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🏆</div>
+        <div>
+          <div class="award-year">2023</div>
+          <div class="award-title">Best of 10 — LPDP Business Competition</div>
+          <div class="award-org">Indonesia Endowment Funds for Education (LPDP)</div>
+        </div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🎖️</div>
+        <div>
+          <div class="award-year">2022</div>
+          <div class="award-title">5th Place — BSI Entrepreneurial Talent</div>
+          <div class="award-org">Bank Syariah Indonesia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">Open-source research and development work</p>
+    <div class="projects-grid">
+      <a class="project-card" href="https://github.com/zakiulfahmijailani/SIGAPP" target="_blank" rel="noopener">
+        <div class="project-name">SIGAPP</div>
+        <div class="project-desc">Agentic GeoAI system for education planning in Nusa Tenggara Timur (NTT)</div>
+        <div class="project-stack"><span class="stack-tag">TypeScript</span><span class="stack-tag">PostGIS</span><span class="stack-tag">LLM</span></div>
+      </a>
+      <a class="project-card" href="https://github.com/zakiulfahmijailani/SIPEKA" target="_blank" rel="noopener">
+        <div class="project-name">SIPEKA</div>
+        <div class="project-desc">Curriculum & assessment management system for educational institutions</div>
+        <div class="project-stack"><span class="stack-tag">Next.js</span><span class="stack-tag">TypeScript</span><span class="stack-tag">Supabase</span></div>
+      </a>
+      <a class="project-card" href="https://github.com/zakiulfahmijailani/IndoVilExiOW" target="_blank" rel="noopener">
+        <div class="project-name">IndoVilExiOW</div>
+        <div class="project-desc">Village polygon extraction tool using OpenStreetMap & Wikipedia data</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">OSM</span></div>
+      </a>
+      <a class="project-card" href="https://github.com/zakiulfahmijailani/PetaBencana.id_BulkDownloader" target="_blank" rel="noopener">
+        <div class="project-name">PetaBencana Downloader</div>
+        <div class="project-desc">Bulk API downloader & GeoJSON converter for Indonesia disaster data</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">GeoJSON</span></div>
+      </a>
+      <a class="project-card" href="https://github.com/zakiulfahmijailani/Ambulance_Response_Time_Jakarta" target="_blank" rel="noopener">
+        <div class="project-name">Ambulance Response Time Jakarta</div>
+        <div class="project-desc">Spatiotemporal analysis of ambulance response across Jakarta districts</div>
+        <div class="project-stack"><span class="stack-tag">Python</span><span class="stack-tag">Jupyter</span><span class="stack-tag">QGIS</span></div>
+      </a>
+      <a class="project-card" href="https://github.com/zakiulfahmijailani/undang-io" target="_blank" rel="noopener">
+        <div class="project-name">undang-io</div>
+        <div class="project-desc">Digital invitation web platform with dashboard and RSVP management</div>
+        <div class="project-stack"><span class="stack-tag">Next.js</span><span class="stack-tag">TypeScript</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Zakiul Fahmi Jailani, MSc · Bakrie University, Jakarta, Indonesia</p>
+  <p style="margin-top:0.5rem;"><a href="mailto:zakiul.jailani@bakrie.ac.id">zakiul.jailani@bakrie.ac.id</a> · <a href="https://github.com/zakiulfahmijailani" target="_blank">GitHub</a> · <a href="https://orcid.org/0000-0002-2171-0533" target="_blank">ORCID</a> · <a href="https://scholar.google.com/citations?user=FgeGr1EAAAAJ" target="_blank">Google Scholar</a></p>
+</footer>
 
 </body>
 </html>
