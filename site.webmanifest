@@ -1,0 +1,17 @@
+{
+  "name": "Zakiul Fahmi Jailani",
+  "short_name": "ZFJ",
+  "description": "GeoAI Researcher & Lecturer at Bakrie University, Jakarta",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e1e1c",
+  "theme_color": "#CC7D5E",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
