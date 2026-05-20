@@ -1,0 +1,6 @@
+# Drop your newsletter .md files here to trigger a broadcast.
+# Format:
+#   Line 1:  Subject: Your email subject here
+#   Line 2+: Email body in Markdown
+#
+# Example filename: 2026-05-20-new-paper.md

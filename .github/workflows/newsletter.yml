@@ -1,0 +1,29 @@
+name: Newsletter Broadcast & Subscriber Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'newsletter/**'   # trigger ONLY when you add a file inside newsletter/ folder
+
+jobs:
+  broadcast:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run newsletter script
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          SUBSCRIBER_LIMIT_WARN: '80'
+        run: python scripts/notify_subscribers.py
