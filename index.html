@@ -36,9 +36,6 @@
       --shadow-lg:      0 12px 48px rgba(0,0,0,0.55);
       --font-body:      'Inter', 'Geist', system-ui, sans-serif;
       --font-display:   'Instrument Serif', Georgia, serif;
-      --hero-bg1:       #1e1e1c;
-      --hero-bg2:       #252523;
-      --hero-glow:      rgba(204,125,94,0.12);
     }
 
     /* === ABSOLUTELY LIGHT === */
@@ -62,10 +59,6 @@
       --shadow-sm:      0 1px 3px rgba(42,37,32,0.07), 0 4px 12px rgba(42,37,32,0.05);
       --shadow-md:      0 4px 20px rgba(42,37,32,0.10);
       --shadow-lg:      0 12px 48px rgba(42,37,32,0.13);
-      /* Hero tetap gelap di light mode agar teks putih tetap terbaca */
-      --hero-bg1:       #1e1e1c;
-      --hero-bg2:       #2a2420;
-      --hero-glow:      rgba(204,125,94,0.15);
     }
 
     html { scroll-behavior: smooth; scroll-padding-top: 60px; }
@@ -126,9 +119,9 @@
     }
     .theme-toggle:hover { background: rgba(204,125,94,0.2); color: var(--accent); }
 
-    /* === HERO — always dark background, always white text === */
+    /* === HERO — ALWAYS DARK, regardless of theme === */
     .hero {
-      background: linear-gradient(145deg, var(--hero-bg1) 0%, var(--hero-bg2) 100%);
+      background: linear-gradient(145deg, #1e1e1c 0%, #252523 100%) !important;
       color: #fff;
       padding: 5rem 2rem 5rem;
       position: relative;
@@ -147,7 +140,7 @@
       top: -180px; right: -180px;
       width: 560px; height: 560px;
       border-radius: 50%;
-      background: radial-gradient(circle, var(--hero-glow) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(204,125,94,0.12) 0%, transparent 65%);
       pointer-events: none;
     }
     .hero-inner {
@@ -163,7 +156,7 @@
       display: inline-flex; align-items: center; gap: 0.5rem;
       font-size: 0.71rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.12em;
-      color: var(--accent);
+      color: #CC7D5E;
       background: rgba(204,125,94,0.12);
       border: 1px solid rgba(204,125,94,0.28);
       border-radius: 99px;
@@ -177,7 +170,7 @@
       line-height: 1.1;
       margin-bottom: 0.6rem;
       letter-spacing: -0.01em;
-      color: #F9F9F7;
+      color: #F9F9F7 !important;
     }
     .hero-name em {
       font-style: italic;
@@ -185,11 +178,11 @@
       font-size: 0.72em;
       display: block;
       margin-top: 0.2rem;
-      color: #F9F9F7;
+      color: #F9F9F7 !important;
     }
     .hero-desc {
       font-size: 1rem;
-      color: rgba(249,249,247,0.65);
+      color: rgba(249,249,247,0.65) !important;
       max-width: 50ch;
       margin-bottom: 2rem;
       line-height: 1.78;
@@ -199,13 +192,13 @@
       display: inline-flex; align-items: center; gap: 0.4rem;
       background: rgba(249,249,247,0.06);
       border: 1px solid rgba(249,249,247,0.12);
-      color: rgba(249,249,247,0.8);
+      color: rgba(249,249,247,0.8) !important;
       border-radius: 99px;
       padding: 0.35rem 0.9rem;
       font-size: 0.78rem; font-weight: 500;
       transition: background 0.18s, border-color 0.18s, color 0.18s;
     }
-    .hero-badge:hover { background: rgba(204,125,94,0.18); border-color: rgba(204,125,94,0.4); color: #fff; }
+    .hero-badge:hover { background: rgba(204,125,94,0.18); border-color: rgba(204,125,94,0.4); color: #fff !important; }
     .hero-badge svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; flex-shrink: 0; }
 
     .avatar-wrap { position: relative; width: 192px; height: 192px; flex-shrink: 0; }
@@ -222,8 +215,8 @@
       transform: translateX(-50%);
       width: 8px; height: 8px;
       border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 10px var(--accent);
+      background: #CC7D5E;
+      box-shadow: 0 0 10px #CC7D5E;
     }
     @keyframes ring-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
     .hero-avatar {
@@ -236,17 +229,16 @@
     }
     .avatar-badge {
       position: absolute; bottom: 8px; right: 0px; z-index: 2;
-      background: var(--accent);
+      background: #CC7D5E;
       color: #fff;
       font-size: 0.63rem; font-weight: 700;
       text-transform: uppercase; letter-spacing: 0.07em;
       padding: 0.25rem 0.6rem;
       border-radius: 99px;
-      border: 2px solid #2D2D2B;
+      border: 2px solid #1e1e1c;
       box-shadow: 0 2px 8px rgba(0,0,0,0.4);
       white-space: nowrap;
     }
-    [data-theme="light"] .avatar-badge { border-color: #1e1e1c; }
 
     /* === STATS === */
     .stats-bar {
@@ -265,7 +257,7 @@
       line-height: 1;
       margin-bottom: 0.3rem;
     }
-    .stat-value span { color: var(--accent); }
+    .stat-value span { color: #CC7D5E; }
     .stat-label { font-size: 0.67rem; color: rgba(249,249,247,0.38); text-transform: uppercase; letter-spacing: 0.1em; }
 
     /* === SECTIONS === */
