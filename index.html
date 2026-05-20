@@ -32,7 +32,6 @@
     a:hover { color: var(--teal-light); }
     img { display: block; max-width: 100%; }
     p { max-width: 70ch; }
-
     nav {
       position: sticky; top: 0; z-index: 100;
       background: rgba(10,37,64,0.97);
@@ -45,7 +44,6 @@
     .nav-links { display: flex; gap: 1.75rem; }
     .nav-links a { color: rgba(255,255,255,0.75); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; }
     .nav-links a:hover { color: #fff; }
-
     .hero {
       background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #0d5a6e 100%);
       color: #fff;
@@ -71,26 +69,22 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.3);
       flex-shrink: 0;
     }
-
     .stats-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 2rem; }
     .stats-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 2.5rem; flex-wrap: wrap; }
     .stat { text-align: center; }
     .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--navy); font-variant-numeric: tabular-nums; }
     .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.1rem; }
-
     .container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
     section { padding: 3.5rem 2rem; }
     section:nth-child(even) { background: var(--surface); }
     .section-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: var(--navy); margin-bottom: 0.35rem; }
     .section-subtitle { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 2rem; }
-
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
     .about-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; }
     .about-card h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.6rem; }
     .about-card p, .about-card li { font-size: 0.9rem; color: var(--text); }
     .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
     .about-card li::before { content: '→ '; color: var(--teal); }
-
     .pub-year { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin: 1.75rem 0 0.75rem; }
     .pub-year:first-child { margin-top: 0; }
     .pub-item { border-left: 2px solid var(--border); padding: 0.85rem 0 0.85rem 1.25rem; margin-bottom: 0.25rem; transition: border-color 0.18s; }
@@ -102,7 +96,6 @@
     .pub-type.conference { background: #f0e8f8; color: #5a2090; }
     .pub-type.book { background: #e8f8ee; color: #1a6e3a; }
     .pub-doi { font-size: 0.8rem; }
-
     .grants-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
     .grants-table th { text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); border-bottom: 2px solid var(--border); padding: 0.5rem 0.75rem; }
     .grants-table td { padding: 0.85rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
@@ -110,14 +103,12 @@
     .grants-table tr:hover td { background: var(--bg); }
     .amount { font-weight: 700; color: var(--navy); white-space: nowrap; }
     .funder { color: var(--text-muted); font-size: 0.8rem; }
-
     .awards-list { display: flex; flex-direction: column; gap: 1rem; }
     .award-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; }
     .award-icon { font-size: 1.5rem; flex-shrink: 0; }
     .award-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
     .award-org { font-size: 0.825rem; color: var(--text-muted); }
     .award-year { font-size: 0.75rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
-
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
     .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; transition: box-shadow 0.18s, border-color 0.18s; display: block; }
     .project-card:hover { box-shadow: var(--shadow); border-color: rgba(13,122,138,0.3); }
@@ -125,10 +116,8 @@
     .project-desc { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; }
     .project-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; }
     .stack-tag { font-size: 0.7rem; font-weight: 600; background: rgba(13,122,138,0.08); color: var(--teal); border-radius: 4px; padding: 0.15rem 0.45rem; }
-
     footer { background: var(--navy); color: rgba(255,255,255,0.6); text-align: center; padding: 2rem; font-size: 0.825rem; }
     footer a { color: rgba(255,255,255,0.8); }
-
     @media (max-width: 640px) {
       .hero-inner { grid-template-columns: 1fr; }
       .hero-avatar { width: 120px; height: 120px; }
@@ -166,7 +155,7 @@
         <a class="hero-badge" href="https://www.linkedin.com/in/zakiulfahmi/" target="_blank" rel="noopener">💼 LinkedIn</a>
       </div>
     </div>
-    <img class="hero-avatar" src="./profile.jpg" alt="Zakiul Fahmi Jailani" width="160" height="160" loading="eager">
+    <img class="hero-avatar" src="./315444547_5870104653023247_855334815523158116_n.jpg" alt="Zakiul Fahmi Jailani" width="160" height="160" loading="eager">
   </div>
 </section>
 
@@ -212,14 +201,12 @@
   <div class="container">
     <h2 class="section-title">Publications</h2>
     <p class="section-subtitle">7 peer-reviewed articles & book chapters · 4 international conferences · <a href="https://orcid.org/0000-0002-2171-0533" target="_blank">ORCID: 0000-0002-2171-0533</a></p>
-
     <div class="pub-year">2026</div>
     <div class="pub-item">
       <div class="pub-title">Making AI Outputs Match the Intended Goals (Validity)</div>
       <div class="pub-meta"><span class="pub-type book">Book Chapter</span>Al Hakim, S., Jailani, Z.F., et al. · IGI Global</div>
       <div class="pub-doi"><a href="https://doi.org/10.4018/979-8-3373-6935-8.ch001" target="_blank">DOI: 10.4018/979-8-3373-6935-8.ch001</a></div>
     </div>
-
     <div class="pub-year">2025</div>
     <div class="pub-item">
       <div class="pub-title">SiagaJakarta: An Agentic GeoAI Framework for Autonomous Geospatial Analysis of Emergency Services</div>
@@ -231,28 +218,24 @@
       <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F. et al. · INTECOMS: Journal of Information Technology and Computer Science, 8(1)</div>
       <div class="pub-doi"><a href="https://doi.org/10.31539/intecoms.v8i1.13991" target="_blank">DOI: 10.31539/intecoms.v8i1.13991</a></div>
     </div>
-
     <div class="pub-year">2024</div>
     <div class="pub-item">
       <div class="pub-title">Comparison of the Performance of the VADER and RoBERTa Algorithms on Twitter</div>
       <div class="pub-meta"><span class="pub-type journal">Journal</span>Nurmadewi, D., Jailani, Z.F., & Manik, N.K.S. · SISTEMASI, 13(4)</div>
       <div class="pub-doi"><a href="https://doi.org/10.32520/stmsi.v13i4.4198" target="_blank">DOI: 10.32520/stmsi.v13i4.4198</a></div>
     </div>
-
     <div class="pub-year">2023</div>
     <div class="pub-item">
       <div class="pub-title">Mapping the Golden Hour: A Spatiotemporal Analysis of Ambulance Response Time in Urban Jakarta</div>
       <div class="pub-meta"><span class="pub-type journal">Journal</span>Jailani, Z.F., Nurmadewi, D., Sumanjaya, R.B., & Manik, N.K.S. · Geosains Kutai Basin, 6(2), 98–104</div>
       <div class="pub-doi"><a href="https://doi.org/10.30872/geofisunmul.v6i2.1188" target="_blank">DOI: 10.30872/geofisunmul.v6i2.1188</a></div>
     </div>
-
     <div class="pub-year">2021</div>
     <div class="pub-item">
       <div class="pub-title">A Machine Learning Approach to Study Tourist Interests and Predict Tourism Demand on Bonaire Island from Social Media Data</div>
       <div class="pub-meta"><span class="pub-type conference">Conference</span>Jailani, Z.F., Verweij, P., van der Wal, J.T., & van Lammeren, R. · Proc. 13th ICTS, IEEE</div>
       <div class="pub-doi"><a href="https://doi.org/10.1109/ICTS52701.2021.9608497" target="_blank">DOI: 10.1109/ICTS52701.2021.9608497</a></div>
     </div>
-
     <div class="pub-year">2019</div>
     <div class="pub-item">
       <div class="pub-title">Assessing Indonesia Spatial Data Infrastructure Using R for Disaster Management</div>
@@ -267,9 +250,7 @@
     <h2 class="section-title">Research Grants</h2>
     <p class="section-subtitle">Total secured funding: USD 25,000 + IDR 68,400,000 (~USD 29,178 equivalent)</p>
     <table class="grants-table">
-      <thead>
-        <tr><th>Year</th><th>Project</th><th>Funder</th><th>Amount</th></tr>
-      </thead>
+      <thead><tr><th>Year</th><th>Project</th><th>Funder</th><th>Amount</th></tr></thead>
       <tbody>
         <tr>
           <td>2026</td>
