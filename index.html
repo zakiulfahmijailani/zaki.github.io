@@ -572,8 +572,8 @@
       margin-left: auto; margin-right: auto;
     }
 
-    /* Subscribe form — custom styled */
-    .subscribe-form-row {
+    /* Subscribe form */
+    .subscribe-form {
       display: flex;
       gap: 0.6rem;
       align-items: flex-start;
@@ -615,7 +615,8 @@
       white-space: nowrap;
     }
     .subscribe-btn:hover { background: var(--accent-hover); }
-    .subscribe-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Success state — shown when ?subscribed=1 in URL */
     .subscribe-success {
       display: none;
       text-align: center;
@@ -632,12 +633,6 @@
       font-weight: 400;
       color: var(--accent);
       margin-bottom: 0.35rem;
-    }
-    .subscribe-error {
-      display: none;
-      margin-top: 0.6rem;
-      font-size: 0.8rem;
-      color: #f87171;
     }
     .subscribe-privacy {
       margin-top: 1rem;
@@ -677,7 +672,7 @@
       .wn-grid { grid-template-columns: 1fr; }
       .wn-card.announcement, .wn-card.article, .wn-card.project { grid-column: 1; grid-row: auto; }
       .whats-new-header { flex-direction: column; align-items: flex-start; }
-      .subscribe-form-row { flex-direction: column; }
+      .subscribe-form { flex-direction: column; }
       .subscribe-email-field { min-width: 0; width: 100%; }
       .subscribe-btn { width: 100%; }
     }
@@ -1039,19 +1034,40 @@
     <h2 class="subscribe-title">Stay in the loop</h2>
     <p class="subscribe-desc">Get updates on new publications, research notes, and project launches — no spam, unsubscribe anytime.</p>
 
+    <!-- Native HTML form POST — no CORS issue, data goes directly to MailerLite -->
     <div id="subscribe-form-wrap">
-      <div class="subscribe-form-row">
+      <form
+        class="subscribe-form"
+        action="https://assets.mailerlite.com/jsonp/1545762/forms/187996210554996591/subscribe"
+        method="post"
+        target="_self"
+        novalidate
+        id="ml-subscribe-form"
+      >
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <!-- MailerLite redirect back to site after success -->
+        <input type="hidden" name="redirect" value="https://zakiulfahmijailani.github.io/?subscribed=1#subscribe">
         <div class="subscribe-email-field">
-          <input type="email" id="subscribe-email" placeholder="your@email.com" autocomplete="email" aria-label="Email address">
+          <input
+            type="email"
+            name="fields[email]"
+            id="subscribe-email"
+            placeholder="your@email.com"
+            autocomplete="email"
+            aria-label="Email address"
+            required
+          >
         </div>
-        <button type="button" class="subscribe-btn" id="subscribe-btn">Subscribe</button>
-      </div>
-      <div class="subscribe-error" id="subscribe-error"></div>
+        <button type="submit" class="subscribe-btn">Subscribe</button>
+      </form>
+      <div class="subscribe-error" id="subscribe-error" style="display:none;margin-top:0.6rem;font-size:0.8rem;color:#f87171;"></div>
     </div>
 
+    <!-- Shown when redirected back with ?subscribed=1 -->
     <div class="subscribe-success" id="subscribe-success">
-      <h4>Thank you!</h4>
-      <p>You're now subscribed. Check your inbox to confirm.</p>
+      <h4>Thank you! 🎉</h4>
+      <p>You're now subscribed. Check your inbox to confirm your subscription.</p>
     </div>
 
     <p class="subscribe-privacy">No spam. Unsubscribe anytime. Read the <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.</p>
@@ -1073,6 +1089,7 @@
 </footer>
 
 <script>
+  // Theme toggle
   (function(){
     const root = document.documentElement;
     const toggle = document.querySelector('[data-theme-toggle]');
@@ -1092,6 +1109,7 @@
     });
   })();
 
+  // What's New tabs
   (function(){
     const tabs = document.querySelectorAll('.wn-tab');
     const cards = document.querySelectorAll('.wn-card');
@@ -1124,6 +1142,7 @@
     });
   })();
 
+  // Scroll reveal
   (function(){
     const els = document.querySelectorAll('.reveal');
     if(!els.length) return;
@@ -1133,54 +1152,31 @@
     els.forEach(function(el){ io.observe(el); });
   })();
 
-  // ======= SUBSCRIBE — manual fetch, no page redirect =======
+  // Subscribe — client-side validation + show success if redirected back with ?subscribed=1
   (function(){
-    var btn = document.getElementById('subscribe-btn');
+    // Check if redirected back after successful subscribe
+    if(window.location.search.includes('subscribed=1')){
+      var wrap = document.getElementById('subscribe-form-wrap');
+      var success = document.getElementById('subscribe-success');
+      if(wrap) wrap.style.display = 'none';
+      if(success) success.style.display = 'block';
+      // Clean the URL without reloading
+      history.replaceState(null, '', window.location.pathname + '#subscribe');
+    }
+
+    // Client-side email validation before submit
+    var form = document.getElementById('ml-subscribe-form');
     var emailInput = document.getElementById('subscribe-email');
-    var formWrap = document.getElementById('subscribe-form-wrap');
-    var successDiv = document.getElementById('subscribe-success');
     var errorDiv = document.getElementById('subscribe-error');
-
-    if(!btn) return;
-
-    btn.addEventListener('click', function(){
+    if(!form) return;
+    form.addEventListener('submit', function(e){
       var email = emailInput.value.trim();
       errorDiv.style.display = 'none';
-      errorDiv.textContent = '';
-
       if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        e.preventDefault();
         errorDiv.textContent = 'Please enter a valid email address.';
         errorDiv.style.display = 'block';
-        return;
       }
-
-      btn.disabled = true;
-      btn.textContent = 'Subscribing…';
-
-      var formData = new FormData();
-      formData.append('fields[email]', email);
-      formData.append('ml-submit', '1');
-      formData.append('anticsrf', 'true');
-
-      fetch('https://assets.mailerlite.com/jsonp/1545762/forms/187996210554996591/subscribe', {
-        method: 'POST',
-        body: formData
-      })
-      .then(function(res){
-        // MailerLite returns 200 even on success; any 2xx is treated as success
-        formWrap.style.display = 'none';
-        successDiv.style.display = 'block';
-      })
-      .catch(function(){
-        // CORS may block the response but subscription still goes through on MailerLite's end
-        // Show success anyway since the request was sent
-        formWrap.style.display = 'none';
-        successDiv.style.display = 'block';
-      });
-    });
-
-    emailInput.addEventListener('keydown', function(e){
-      if(e.key === 'Enter') btn.click();
     });
   })();
 </script>
