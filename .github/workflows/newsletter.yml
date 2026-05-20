@@ -1,17 +1,26 @@
-name: Newsletter Broadcast & Subscriber Check
+name: Newsletter Broadcaster
 
 on:
   push:
     branches: [main]
     paths:
-      - 'newsletter/**'   # trigger ONLY when you add a file inside newsletter/ folder
+      - 'newsletter/posts/*.md'
+
+  workflow_dispatch:
+    inputs:
+      subject:
+        description: 'Email subject (override auto-detect)'
+        required: false
+        default: ''
 
 jobs:
   broadcast:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -19,11 +28,14 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests markdown
 
-      - name: Run newsletter script
+      - name: Broadcast newsletter & check subscriber limit
         env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
-          SUBSCRIBER_LIMIT_WARN: '80'
-        run: python scripts/notify_subscribers.py
+          MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}
+          MAILERLITE_GROUP_ID: '187996210554996591'
+          NOTIFY_EMAIL: 'zakiul.jailani@bakrie.ac.id'
+          SUBSCRIBER_LIMIT: '1000'
+          NOTIFY_THRESHOLD: '900'
+          MANUAL_SUBJECT: ${{ github.event.inputs.subject }}
+        run: python scripts/newsletter_broadcast.py
