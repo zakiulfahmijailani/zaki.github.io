@@ -518,6 +518,139 @@
     .project-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.4rem; }
     .stack-tag { font-size: 0.67rem; font-weight: 600; background: var(--accent-dim); color: var(--accent); border-radius: 4px; padding: 0.18rem 0.5rem; border: 1px solid var(--accent-border); }
 
+    /* === SUBSCRIBE / NEWSLETTER === */
+    .subscribe-section {
+      background: #1e1e1c;
+      padding: 4rem 2rem;
+      border-top: 1px solid rgba(249,249,247,0.06);
+      border-bottom: 1px solid rgba(249,249,247,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .subscribe-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(204,125,94,0.07) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+    .subscribe-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+    .subscribe-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent-border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+    }
+    .subscribe-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 2; }
+    .subscribe-label {
+      font-size: 0.67rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.13em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .subscribe-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 400;
+      color: #F9F9F7;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .subscribe-desc {
+      font-size: 0.9rem;
+      color: rgba(249,249,247,0.5);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 44ch;
+      margin-left: auto; margin-right: auto;
+    }
+
+    /* MailerLite form overrides — match site design */
+    #mlb2-subscribe .ml-form-embedWrapper {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+    #mlb2-subscribe .ml-form-embedBody {
+      padding: 0 !important;
+    }
+    #mlb2-subscribe .ml-form-horizontalRow {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    #mlb2-subscribe .ml-field-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    #mlb2-subscribe input[type="email"] {
+      width: 100%;
+      background: rgba(249,249,247,0.05) !important;
+      border: 1px solid rgba(249,249,247,0.15) !important;
+      border-radius: var(--radius) !important;
+      color: #F9F9F7 !important;
+      font-family: var(--font-body) !important;
+      font-size: 0.9rem !important;
+      padding: 0.7rem 1rem !important;
+      outline: none !important;
+      transition: border-color 0.18s, background 0.18s !important;
+    }
+    #mlb2-subscribe input[type="email"]:focus {
+      border-color: var(--accent) !important;
+      background: rgba(204,125,94,0.07) !important;
+    }
+    #mlb2-subscribe input[type="email"]::placeholder { color: rgba(249,249,247,0.3) !important; }
+    #mlb2-subscribe .ml-form-embedSubmit button,
+    #mlb2-subscribe button[type="submit"] {
+      background: var(--accent) !important;
+      color: #fff !important;
+      font-family: var(--font-body) !important;
+      font-size: 0.875rem !important;
+      font-weight: 600 !important;
+      border: none !important;
+      border-radius: var(--radius) !important;
+      padding: 0.7rem 1.4rem !important;
+      cursor: pointer !important;
+      transition: background 0.18s !important;
+      white-space: nowrap !important;
+    }
+    #mlb2-subscribe .ml-form-embedSubmit button:hover,
+    #mlb2-subscribe button[type="submit"]:hover {
+      background: var(--accent-hover) !important;
+    }
+    #mlb2-subscribe .ml-form-successBody {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(204,125,94,0.08);
+      border: 1px solid var(--accent-border);
+      border-radius: var(--radius);
+      color: #F9F9F7;
+      font-size: 0.9rem;
+    }
+    #mlb2-subscribe .ml-form-successBody h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+    .subscribe-privacy {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      color: rgba(249,249,247,0.28);
+    }
+    .subscribe-privacy a { color: rgba(249,249,247,0.4); text-decoration: underline; }
+    .subscribe-privacy a:hover { color: var(--accent); }
+
     /* === FOOTER === */
     footer { background: #1a1a18; color: rgba(249,249,247,0.4); padding: 3rem 2rem 2.5rem; text-align: center; border-top: 1px solid rgba(249,249,247,0.05); }
     .footer-name { font-family: var(--font-display); font-size: 1.3rem; color: rgba(249,249,247,0.8); margin-bottom: 0.3rem; }
@@ -548,6 +681,8 @@
       .wn-grid { grid-template-columns: 1fr; }
       .wn-card.announcement, .wn-card.article, .wn-card.project { grid-column: 1; grid-row: auto; }
       .whats-new-header { flex-direction: column; align-items: flex-start; }
+      #mlb2-subscribe .ml-form-horizontalRow { flex-direction: column; }
+      #mlb2-subscribe .ml-field-group { min-width: 0; }
     }
   </style>
 </head>
@@ -897,6 +1032,55 @@
   </div>
 </section>
 
+<!-- ======= SUBSCRIBE / NEWSLETTER ======= -->
+<div class="subscribe-section reveal" id="subscribe">
+  <div class="subscribe-inner">
+    <div class="subscribe-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </div>
+    <div class="subscribe-label">Newsletter</div>
+    <h2 class="subscribe-title">Stay in the loop</h2>
+    <p class="subscribe-desc">Get updates on new publications, research notes, and project launches — no spam, unsubscribe anytime.</p>
+
+    <!-- MailerLite Embedded Form — Group ID: 187996210554996591 -->
+    <div id="mlb2-subscribe" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-187996210554996591">
+      <div class="ml-form-align-center">
+        <div class="ml-form-embedWrapper embedForm">
+          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1545762/forms/187996210554996591/subscribe" data-code="" method="post" target="_blank">
+              <div class="ml-form-formContent horozintalForm">
+                <div class="ml-form-horizontalRow">
+                  <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                    <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="your@email.com" autocomplete="email">
+                  </div>
+                  <div class="ml-form-embedSubmit">
+                    <button type="submit" class="primary">Subscribe</button>
+                    <button disabled="disabled" style="display:none;" type="button" class="loading">
+                      <div class="ml-form-embedSubmitLoad"></div>
+                      <span class="sr-only">Loading...</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" name="ml-submit" value="1">
+              <input type="hidden" name="anticsrf" value="true">
+            </form>
+          </div>
+          <div class="ml-form-successBody row-success" style="display:none;">
+            <div class="ml-form-successContent">
+              <h4>Thank you!</h4>
+              <p>You're now subscribed. Check your inbox to confirm.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End MailerLite Embed -->
+
+    <p class="subscribe-privacy">No spam. Unsubscribe anytime. Read the <a href="https://www.mailerlite.com/legal/privacy-policy" target="_blank" rel="noopener">privacy policy</a>.</p>
+  </div>
+</div>
+
 <footer>
   <div class="footer-name">Zakiul Fahmi Jailani</div>
   <div class="footer-role">Lecturer · Researcher · Developer</div>
@@ -971,6 +1155,41 @@
     }, { threshold: 0.1 });
     els.forEach(function(el){ io.observe(el); });
   })();
+
+  /* MailerLite form submit handler */
+  (function(){
+    var form = document.querySelector('#mlb2-subscribe form');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var loadingBtn = form.querySelector('button.loading');
+      var successBody = document.querySelector('#mlb2-subscribe .ml-form-successBody');
+      var formBody = document.querySelector('#mlb2-subscribe .ml-form-embedBody');
+      if(submitBtn) submitBtn.style.display = 'none';
+      if(loadingBtn) loadingBtn.style.display = '';
+
+      var data = new FormData(form);
+      var params = new URLSearchParams();
+      data.forEach(function(v, k){ params.append(k, v); });
+
+      fetch(form.action + '?' + params.toString(), {
+        method: 'GET',
+        mode: 'no-cors'
+      }).finally(function(){
+        if(formBody) formBody.style.display = 'none';
+        if(successBody) successBody.style.display = '';
+      });
+    });
+  })();
 </script>
+
+<!-- MailerLite Universal -->
+<script>
+(function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+ml('account', '1545762');
+</script>
+<!-- End MailerLite Universal -->
+
 </body>
 </html>
