@@ -475,16 +475,37 @@
       color: var(--text-muted);
       border: 1px solid var(--border);
     }
-    .project-link {
-      font-size: 0.78rem;
-      color: var(--accent);
-      white-space: nowrap;
-      display: flex; align-items: center; gap: 0.3rem;
-      opacity: 0.7;
-      transition: opacity 0.18s;
+    .project-actions {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;
     }
-    .project-link:hover { opacity: 1; }
-    .project-link svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+    .project-btn {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-size: 0.75rem; font-weight: 600;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      background: var(--accent-dim);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+    }
+    .project-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .project-btn svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2.5; }
+    .project-btn-vercel {
+      border-color: rgba(14,165,233,0.3);
+      color: var(--teal);
+      background: var(--teal-dim);
+    }
+    .project-btn-vercel:hover {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
     .project-status {
       font-size: 0.67rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.08em;
@@ -518,6 +539,7 @@
     }
     .pub-journal { background: rgba(14,165,233,0.1); color: var(--teal); border: 1px solid rgba(14,165,233,0.2); }
     .pub-conference { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); }
+    .pub-book { background: rgba(120,80,200,0.1); color: #a87de0; border: 1px solid rgba(120,80,200,0.2); }
     .pub-year { font-size: 0.75rem; color: var(--text-faint); }
     .pub-title {
       font-size: 0.95rem; font-weight: 600;
@@ -775,6 +797,8 @@
       nav { padding: 0 1rem; }
       .nav-links { gap: 1rem; }
       section { padding: 3rem 1.25rem; }
+      .project-item { grid-template-columns: 1fr; }
+      .project-actions { flex-direction: row; align-items: flex-start; }
     }
     @media (max-width: 600px) {
       .nav-links a[href="#research"],
@@ -993,63 +1017,114 @@
     <h2 class="section-title" id="projects-heading">Projects</h2>
     <div class="projects-list" role="list">
 
+      <!-- SIGAPP -->
       <article class="project-item" role="listitem">
         <div>
-          <div class="project-name">SIGAPP — Agentic GeoAI for Education Planning</div>
-          <div class="project-desc">PhD research project. An autonomous geospatial AI system that integrates PostGIS, LLM agents, and vector embeddings to support education infrastructure planning in Nusa Tenggara Timur, Indonesia.</div>
+          <div class="project-name">SIGAPP</div>
+          <div class="project-desc">Agentic GeoAI system for education planning in NTT — integrates PostGIS, LLM agents, and vector embeddings to support school intervention decisions in Nusa Tenggara Timur.</div>
           <div class="project-tags">
+            <span class="tag">TypeScript</span>
             <span class="tag">PostGIS</span>
-            <span class="tag">LLM Agents</span>
-            <span class="tag">Vector Embeddings</span>
-            <span class="tag">Python</span>
-            <span class="tag">FastAPI</span>
+            <span class="tag">LLM</span>
           </div>
         </div>
-        <span class="project-status status-active">Active</span>
+        <div class="project-actions">
+          <span class="project-status status-active">Active</span>
+          <a href="https://github.com/zakiulfahmijailani/SIGAPP" target="_blank" rel="noopener noreferrer" class="project-btn" aria-label="View SIGAPP on GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
       </article>
 
+      <!-- SIPEKA -->
       <article class="project-item" role="listitem">
         <div>
-          <div class="project-name">SIPEKA — Student Information System</div>
-          <div class="project-desc">Full-stack academic management platform for higher education institutions, featuring real-time dashboards, attendance tracking, and AI-assisted grading workflows.</div>
+          <div class="project-name">SIPEKA</div>
+          <div class="project-desc">Curriculum &amp; assessment management system for higher education — OBE-aligned with BAN-PT reporting, AI-assisted grading, and real-time dashboards.</div>
           <div class="project-tags">
-            <span class="tag">Next.js</span>
             <span class="tag">TypeScript</span>
+            <span class="tag">Next.js</span>
             <span class="tag">Supabase</span>
-            <span class="tag">PostgreSQL</span>
           </div>
         </div>
-        <span class="project-status status-ongoing">Ongoing</span>
+        <div class="project-actions">
+          <span class="project-status status-ongoing">Ongoing</span>
+          <a href="https://github.com/zakiulfahmijailani/SIPEKA" target="_blank" rel="noopener noreferrer" class="project-btn" aria-label="View SIPEKA on GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
       </article>
 
+      <!-- IndoVilExiOW -->
       <article class="project-item" role="listitem">
         <div>
-          <div class="project-name">Undang.io — Digital Invitation Platform</div>
-          <div class="project-desc">Modern digital wedding and event invitation system with a management dashboard, RSVP tracking, and customisable templates built on Next.js and Neon PostgreSQL.</div>
+          <div class="project-name">IndoVilExiOW</div>
+          <div class="project-desc">Village polygon extraction tool that harnesses OpenStreetMap (OSM) and Wikipedia data to extract and explore individual village boundaries across Indonesia.</div>
           <div class="project-tags">
-            <span class="tag">Next.js</span>
-            <span class="tag">Neon DB</span>
-            <span class="tag">Vercel</span>
-            <span class="tag">TypeScript</span>
+            <span class="tag">Python</span>
           </div>
         </div>
-        <a href="https://github.com/zakiulfahmijailani" target="_blank" rel="noopener noreferrer" class="project-link">
-          GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
+        <div class="project-actions">
+          <a href="https://github.com/zakiulfahmijailani/IndoVilExiOW" target="_blank" rel="noopener noreferrer" class="project-btn" aria-label="View IndoVilExiOW on GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
       </article>
 
+      <!-- PetaBencana Downloader -->
       <article class="project-item" role="listitem">
         <div>
-          <div class="project-name">GeoAI Teaching Materials</div>
-          <div class="project-desc">Open curriculum resources for data structures, statistics, and big data processing (PySpark) courses — including real-world datasets, exam banks, and interactive notebooks.</div>
+          <div class="project-name">PetaBencana Downloader</div>
+          <div class="project-desc">Bulk API downloader &amp; GeoJSON converter for PetaBencana.id disaster flood report data — enables large-scale spatial analysis of Jakarta flooding events.</div>
           <div class="project-tags">
-            <span class="tag">PySpark</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/zakiulfahmijailani/PetaBencana.id_BulkDownloader" target="_blank" rel="noopener noreferrer" class="project-btn" aria-label="View PetaBencana Downloader on GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <!-- Ambulance Response Time Jakarta -->
+      <article class="project-item" role="listitem">
+        <div>
+          <div class="project-name">Ambulance Response Time Jakarta</div>
+          <div class="project-desc">Spatial analysis of ambulance distribution, response time, and population coverage across DKI Jakarta — powered by Leaflet, Python, and Google Colab.</div>
+          <div class="project-tags">
             <span class="tag">Python</span>
             <span class="tag">Jupyter</span>
-            <span class="tag">Google Colab</span>
           </div>
         </div>
-        <span class="project-status status-ongoing">Ongoing</span>
+        <div class="project-actions">
+          <a href="https://github.com/zakiulfahmijailani/Ambulance_Response_Time_Jakarta" target="_blank" rel="noopener noreferrer" class="project-btn" aria-label="View Ambulance Response Time Jakarta on GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </article>
+
+      <!-- undang-io -->
+      <article class="project-item" role="listitem">
+        <div>
+          <div class="project-name">undang-io</div>
+          <div class="project-desc">Digital invitation web platform — modern, customisable wedding and event invitations with RSVP tracking and a management dashboard.</div>
+          <div class="project-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Next.js</span>
+          </div>
+        </div>
+        <div class="project-actions">
+          <a href="https://github.com/zakiulfahmijailani/undang-io" target="_blank" rel="noopener noreferrer" class="project-btn" aria-label="View undang-io on GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
       </article>
 
     </div>
@@ -1068,6 +1143,23 @@
       <!-- 1 -->
       <article class="pub-item" role="listitem">
         <div class="pub-meta">
+          <span class="pub-type pub-book">Book Chapter</span>
+          <span class="pub-year">2026</span>
+        </div>
+        <div class="pub-title">Making AI Outputs Match the Intended Goals (Validity)</div>
+        <div class="pub-authors">Al Hakim, S., Jailani, Z.F., Siagian, A.H.A.M., Marlina, E., Maryati, I., Apriani, N.F., Saputra, A., Nugroho, C., &amp; Samsudiat.</div>
+        <div class="pub-venue">Book Chapter, IGI Global</div>
+        <div class="pub-links">
+          <a href="https://doi.org/10.4018/979-8-3373-6935-8.ch001" target="_blank" rel="noopener noreferrer" class="pub-link">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            DOI
+          </a>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="pub-item" role="listitem">
+        <div class="pub-meta">
           <span class="pub-type pub-conference">Conference</span>
           <span class="pub-year">2025</span>
         </div>
@@ -1082,7 +1174,7 @@
         </div>
       </article>
 
-      <!-- 2 -->
+      <!-- 3 -->
       <article class="pub-item" role="listitem">
         <div class="pub-meta">
           <span class="pub-type pub-journal">Journal</span>
@@ -1099,7 +1191,7 @@
         </div>
       </article>
 
-      <!-- 3 -->
+      <!-- 4 -->
       <article class="pub-item" role="listitem">
         <div class="pub-meta">
           <span class="pub-type pub-journal">Journal</span>
@@ -1116,7 +1208,7 @@
         </div>
       </article>
 
-      <!-- 4 -->
+      <!-- 5 -->
       <article class="pub-item" role="listitem">
         <div class="pub-meta">
           <span class="pub-type pub-journal">Journal</span>
@@ -1133,7 +1225,7 @@
         </div>
       </article>
 
-      <!-- 5 -->
+      <!-- 6 -->
       <article class="pub-item" role="listitem">
         <div class="pub-meta">
           <span class="pub-type pub-conference">Conference</span>
@@ -1150,7 +1242,7 @@
         </div>
       </article>
 
-      <!-- 6 -->
+      <!-- 7 -->
       <article class="pub-item" role="listitem">
         <div class="pub-meta">
           <span class="pub-type pub-journal">Journal</span>
